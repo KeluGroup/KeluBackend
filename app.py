@@ -1,4 +1,4 @@
-from fastapi import FastAPI, HTTPException, Request
+from fastapi import FastAPI, HTTPException, Request, APIRouter, Depends
 from pydantic import BaseModel, EmailStr, Field
 from typing import Optional
 import logging
@@ -7,7 +7,16 @@ import os
 
 app = FastAPI()
 logger = logging.getLogger(__name__)
-API_SECRET = os.getenv("FORM_API_SECRET")
+API_SECRET = os.getenv("FORM_API_SECRET") #python -c "import secrets; print(secrets.token_hex(32))"
+
+
+def verify_api_key(request: Request) -> None:
+    key = request.headers.get("x-api-key")
+    if not key or key != API_SECRET:
+        raise HTTPException(status_code=403, detail={"success": False, "status_code": 403, "message": "Forbidden"})
+
+protected_router = APIRouter(dependencies=[Depends(verify_api_key)])
+app.include_router(protected_router)
 
 class FormSubmission(BaseModel):
     name: str = Field(..., min_length=1, max_length=100)
@@ -50,11 +59,6 @@ def build_success_response(payload: FormSubmission, airtable_response: dict) -> 
         "airtable": airtable_response
     }
 
-def verify_api_key(request: Request) -> None:
-    key = request.headers.get("x-api-key")
-    if not key or key != API_SECRET:
-        raise HTTPException(status_code=403, detail="Invalid API key")
-
 
 @app.get("/")
 def health():
@@ -64,11 +68,9 @@ def health():
 def api_health():
     return {"status": "healthy"}
 
-@app.post("/api/formsubmit")
+@protected_router.post("/api/formsubmit")
 def form_submit(payload: FormSubmission, request: Request):
     
-    verify_api_key(request)
-
     try:
         airtable_response = send_to_airtable(payload.model_dump())
         return build_success_response(payload, airtable_response)
