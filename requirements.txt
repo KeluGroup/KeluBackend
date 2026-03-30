@@ -1,1 +1,2 @@
 fastapi==0.117.1
+email-validator==2.2.0
