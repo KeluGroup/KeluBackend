@@ -104,7 +104,6 @@ def form_submit(payload: FormSubmission, request: Request):
     except ValueError as exc:
         raise build_exception(502, "Submission service rejected the request", exc) from exc
     
-
     except Exception as exc:
         raise build_exception(500, "Internal server error", exc) from exc
     
