@@ -2,7 +2,7 @@ from fastapi import FastAPI, HTTPException, Request, APIRouter, Depends
 from pydantic import BaseModel, EmailStr, Field
 from typing import Optional
 from pyairtable import Api
-
+from schemas.models import FormSubmission
 
 import logging
 import os
@@ -20,14 +20,6 @@ def verify_api_key(request: Request) -> None:
     key = request.headers.get("x-api-key")
     if not key or key != API_SECRET:
         raise HTTPException(status_code=403, detail={"success": False, "status_code": 403, "message": "Forbidden"})
-
-
-
-class FormSubmission(BaseModel):
-    name: str = Field(..., min_length=1, max_length=100)
-    email: EmailStr
-    company: Optional[str] = Field(default=None, max_length=100)
-    message: str = Field(..., min_length=1, max_length=2000)
 
 
 def build_exception(status_code: int, detail: str, exc: Exception) -> HTTPException:
