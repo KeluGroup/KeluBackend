@@ -1,17 +1,36 @@
 from fastapi import FastAPI, HTTPException, Request, APIRouter, Depends
 from pyairtable import Api
 from schemas.models import FormSubmission
+from fastapi.staticfiles import StaticFiles
+from fastapi.openapi.docs import get_swagger_ui_html   
 
 import logging
 import os
 
 
-app = FastAPI()
+app = FastAPI(    
+    title="Kelu API",
+    docs_url=None,
+    redoc_url="/redoc",
+    )
+
 logger = logging.getLogger(__name__)
 API_SECRET = os.getenv("FORM_API_SECRET") #python -c "import secrets; print(secrets.token_hex(32))"
 AIRTABLE_API_KEY = os.getenv("AIRTABLE_API_KEY")
 AIRTABLE_BASE_ID = os.getenv("AIRTABLE_BASE_ID")
 AIRTABLE_TABLE_NAME = os.getenv("AIRTABLE_TABLE_NAME")
+
+# Mount static folder
+app.mount("/static", StaticFiles(directory="static"), name="static")
+
+# ── Custom /docs with favicon ──────────────────────────
+@app.get("/docs", include_in_schema=False)
+async def custom_swagger_ui():
+    return get_swagger_ui_html(
+        openapi_url=app.openapi_url,
+        title=f"{app.title} — Docs",
+        swagger_favicon_url="/static/favicon.svg",
+    )
 
 
 def verify_api_key(request: Request) -> None:
