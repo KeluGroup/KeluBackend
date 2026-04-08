@@ -2,10 +2,15 @@ from fastapi import FastAPI, HTTPException, Request, APIRouter, Depends
 from pyairtable import Api
 from schemas.models import FormSubmission
 from fastapi.staticfiles import StaticFiles
-from fastapi.openapi.docs import get_swagger_ui_html   
+from fastapi.openapi.docs import get_swagger_ui_html
+from fastapi.middleware.cors import CORSMiddleware
+
 
 import logging
 import os
+import json
+
+ALLOWED_ORIGINS = json.loads(os.getenv("ALLOWED_ORIGINS", '["http://localhost:5173"]'))
 
 
 app = FastAPI(    
@@ -13,6 +18,14 @@ app = FastAPI(
     docs_url=None,
     redoc_url="/redoc",
     )
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=ALLOWED_ORIGINS,
+    allow_methods=["POST", "GET"],
+    allow_headers=["x-api-key", "Content-Type"],
+)
+
 
 logger = logging.getLogger(__name__)
 API_SECRET = os.getenv("FORM_API_SECRET") #python -c "import secrets; print(secrets.token_hex(32))"
