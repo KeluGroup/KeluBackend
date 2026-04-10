@@ -141,16 +141,30 @@ def get_leads():
                 "email":     r["fields"].get("Email", ""),
                 "company":   r["fields"].get("Company", ""),
                 "message":   r["fields"].get("Message", ""),
+                "status":    r["fields"].get("Status", "Nuevo"),
                 "createdAt": r.get("createdTime", ""),
             }
             for r in records
         ]
-        # Most recent first
-        leads.reverse()
+        # Most recent first — sort by ISO createdTime string (lexicographic = chronological)
+        leads.sort(key=lambda x: x["createdAt"], reverse=True)
         return {"success": True, "total": len(leads), "leads": leads}
 
     except Exception as exc:
         raise build_exception(500, "Failed to fetch leads", exc) from exc
+
+
+class LeadStatusUpdate(BaseModel):
+    status: str = Field(..., pattern="^(Nuevo|Contactado|En proceso|Atendido)$")
+
+@protected_router.patch("/api/admin/leads/{record_id}")
+def update_lead_status(record_id: str, body: LeadStatusUpdate):
+    try:
+        table = get_airtable_table()
+        table.update(record_id, {"Status": body.status})
+        return {"success": True, "id": record_id, "status": body.status}
+    except Exception as exc:
+        raise build_exception(500, "Failed to update lead status", exc) from exc
 
 
 app.include_router(protected_router)
