@@ -133,7 +133,7 @@ def form_submit(payload: FormSubmission, request: Request):
 def get_leads():
     try:
         table   = get_airtable_table()
-        records = table.all(sort=["Created"])
+        records = table.all()
         leads   = [
             {
                 "id":        r["id"],
