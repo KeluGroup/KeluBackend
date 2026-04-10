@@ -106,7 +106,6 @@ protected_router = APIRouter(dependencies=[Depends(verify_api_key)])
 
 @protected_router.post("/api/formsubmit")
 def form_submit(payload: FormSubmission, request: Request):
-    
     try:
         airtable_response = send_to_airtable(payload.model_dump())
         return build_success_response(payload, airtable_response)
@@ -119,14 +118,39 @@ def form_submit(payload: FormSubmission, request: Request):
 
     except TimeoutError as exc:
         raise build_exception(503, "Submission service temporarily unavailable", exc) from exc
-    
+
     except ConnectionError as exc:
         raise build_exception(503, "Submission service unreachable", exc) from exc
 
     except ValueError as exc:
         raise build_exception(502, "Submission service rejected the request", exc) from exc
-    
+
     except Exception as exc:
         raise build_exception(500, "Internal server error", exc) from exc
-    
+
+
+@protected_router.get("/api/admin/leads")
+def get_leads():
+    try:
+        table   = get_airtable_table()
+        records = table.all(sort=["Created"])
+        leads   = [
+            {
+                "id":        r["id"],
+                "name":      r["fields"].get("Name", ""),
+                "email":     r["fields"].get("Email", ""),
+                "company":   r["fields"].get("Company", ""),
+                "message":   r["fields"].get("Message", ""),
+                "createdAt": r.get("createdTime", ""),
+            }
+            for r in records
+        ]
+        # Most recent first
+        leads.reverse()
+        return {"success": True, "total": len(leads), "leads": leads}
+
+    except Exception as exc:
+        raise build_exception(500, "Failed to fetch leads", exc) from exc
+
+
 app.include_router(protected_router)
