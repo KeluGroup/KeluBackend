@@ -9,6 +9,10 @@ from fastapi.middleware.cors import CORSMiddleware
 import logging
 import os
 import json
+import hmac
+import hashlib
+import base64
+import time
 
 # Default to ["*"] so the API works in production without extra config.
 # Real security comes from the x-api-key header check.
@@ -30,7 +34,8 @@ app.add_middleware(
 
 
 logger = logging.getLogger(__name__)
-API_SECRET = os.getenv("FORM_API_SECRET") #python -c "import secrets; print(secrets.token_hex(32))"
+API_SECRET     = os.getenv("FORM_API_SECRET")
+ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD", "")
 AIRTABLE_API_KEY = os.getenv("AIRTABLE_API_KEY")
 AIRTABLE_BASE_ID = os.getenv("AIRTABLE_BASE_ID")
 AIRTABLE_TABLE_NAME = os.getenv("AIRTABLE_TABLE_NAME")
@@ -52,6 +57,32 @@ def verify_api_key(request: Request) -> None:
     key = request.headers.get("x-api-key")
     if not key or key != API_SECRET:
         raise HTTPException(status_code=403, detail={"success": False, "status_code": 403, "message": "Forbidden"})
+
+# ── Admin token (HMAC, valid ~2 hours, no extra deps) ──────────────
+def _make_token(hour_offset: int = 0) -> str:
+    slot = str(int(time.time()) // 3600 + hour_offset)
+    sig  = hmac.new(ADMIN_PASSWORD.encode(), slot.encode(), hashlib.sha256).digest()
+    return base64.urlsafe_b64encode(sig).decode()
+
+def verify_admin_token(request: Request) -> None:
+    token = request.headers.get("x-admin-token", "")
+    if not token or not ADMIN_PASSWORD:
+        raise HTTPException(status_code=403, detail="Forbidden")
+    # Accept current hour and the one before (overlap on boundary)
+    valid = any(hmac.compare_digest(token, _make_token(offset)) for offset in [0, -1])
+    if not valid:
+        raise HTTPException(status_code=403, detail="Forbidden")
+
+class AdminLogin(BaseModel):
+    password: str
+
+@app.post("/api/admin/login")
+def admin_login(body: AdminLogin):
+    if not ADMIN_PASSWORD:
+        raise HTTPException(status_code=503, detail="Admin not configured — set ADMIN_PASSWORD env var")
+    if not hmac.compare_digest(body.password, ADMIN_PASSWORD):
+        raise HTTPException(status_code=401, detail="Invalid password")
+    return {"token": _make_token()}
 
 
 def build_exception(status_code: int, detail: str, exc: Exception) -> HTTPException:
@@ -105,6 +136,7 @@ def api_health():
     return {"status": "healthy"}
 
 protected_router = APIRouter(dependencies=[Depends(verify_api_key)])
+admin_router     = APIRouter(dependencies=[Depends(verify_admin_token)])
 
 @protected_router.post("/api/formsubmit")
 def form_submit(payload: FormSubmission, request: Request):
@@ -131,7 +163,10 @@ def form_submit(payload: FormSubmission, request: Request):
         raise build_exception(500, "Internal server error", exc) from exc
 
 
-@protected_router.get("/api/admin/leads")
+class LeadStatusUpdate(BaseModel):
+    status: str = Field(..., pattern="^(Nuevo|Contactado|En proceso|Atendido)$")
+
+@admin_router.get("/api/admin/leads")
 def get_leads():
     try:
         table   = get_airtable_table()
@@ -148,18 +183,12 @@ def get_leads():
             }
             for r in records
         ]
-        # Most recent first — sort by ISO createdTime string (lexicographic = chronological)
         leads.sort(key=lambda x: x["createdAt"], reverse=True)
         return {"success": True, "total": len(leads), "leads": leads}
-
     except Exception as exc:
         raise build_exception(500, "Failed to fetch leads", exc) from exc
 
-
-class LeadStatusUpdate(BaseModel):
-    status: str = Field(..., pattern="^(Nuevo|Contactado|En proceso|Atendido)$")
-
-@protected_router.patch("/api/admin/leads/{record_id}")
+@admin_router.patch("/api/admin/leads/{record_id}")
 def update_lead_status(record_id: str, body: LeadStatusUpdate):
     try:
         table = get_airtable_table()
@@ -168,5 +197,5 @@ def update_lead_status(record_id: str, body: LeadStatusUpdate):
     except Exception as exc:
         raise build_exception(500, "Failed to update lead status", exc) from exc
 
-
 app.include_router(protected_router)
+app.include_router(admin_router)
