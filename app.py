@@ -1,16 +1,18 @@
 from fastapi import FastAPI, HTTPException, Request, APIRouter, Depends
+from pydantic import BaseModel, Field
 from pyairtable import Api
 from schemas.models import FormSubmission
 from fastapi.staticfiles import StaticFiles
 from fastapi.openapi.docs import get_swagger_ui_html
 from fastapi.middleware.cors import CORSMiddleware
 
-
 import logging
 import os
 import json
 
-ALLOWED_ORIGINS = json.loads(os.getenv("ALLOWED_ORIGINS", '["http://localhost:5173"]'))
+# Default to ["*"] so the API works in production without extra config.
+# Real security comes from the x-api-key header check.
+ALLOWED_ORIGINS = json.loads(os.getenv("ALLOWED_ORIGINS", '["*"]'))
 
 
 app = FastAPI(    
@@ -22,7 +24,7 @@ app = FastAPI(
 app.add_middleware(
     CORSMiddleware,
     allow_origins=ALLOWED_ORIGINS,
-    allow_methods=["POST", "GET"],
+    allow_methods=["POST", "GET", "PATCH"],
     allow_headers=["x-api-key", "Content-Type"],
 )
 
