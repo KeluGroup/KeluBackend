@@ -4,13 +4,16 @@ from services.airtable import create_lead
 from core.auth import verify_api_key
 from core.exceptions import build_exception
 
-router = APIRouter(dependencies=[Depends(verify_api_key)])
+# ── No auth — always accessible ───────────────────────
+health_router = APIRouter()
 
-
-@router.get("/health")
+@health_router.get("/health")
 def health():
     return {"status": "healthy"}
 
+
+# ── Protected — requires API key ──────────────────────
+router = APIRouter(dependencies=[Depends(verify_api_key)])
 
 @router.post("/formsubmit")
 def form_submit(payload: FormSubmission, request: Request):
