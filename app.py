@@ -2,6 +2,8 @@ from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 from fastapi.openapi.docs import get_swagger_ui_html
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi import Request
+from fastapi.responses import Response
 
 from config import ALLOWED_ORIGINS
 from routers.public import router as public_router, health_router
@@ -29,6 +31,22 @@ admin_app.add_middleware(
     allow_methods=["GET", "POST", "PATCH", "OPTIONS"],
     allow_headers=["Content-Type", "x-admin-token"],
 )
+
+
+@admin_app.options("/{rest_of_path:path}")
+async def admin_preflight(rest_of_path: str, request: Request):
+    origin = request.headers.get("origin", "")
+    allowed = origin if origin in ADMIN_ORIGINS else ""
+    return Response(
+        status_code=204,
+        headers={
+            "Access-Control-Allow-Origin":  allowed,
+            "Access-Control-Allow-Methods": "GET, POST, PATCH, OPTIONS",
+            "Access-Control-Allow-Headers": "Content-Type, x-admin-token",
+            "Access-Control-Max-Age":       "86400",
+        }
+    )
+
 admin_app.include_router(login_router)  # POST /login  — no auth dependency
 admin_app.include_router(admin_router)  # GET/PATCH /leads — admin token required
 
