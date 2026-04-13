@@ -6,6 +6,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.openapi.docs import get_swagger_ui_html
 from fastapi.middleware.cors import CORSMiddleware
 
+import bcrypt
 import logging
 import os
 import json
@@ -39,6 +40,7 @@ ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD", "")
 AIRTABLE_API_KEY = os.getenv("AIRTABLE_API_KEY")
 AIRTABLE_BASE_ID = os.getenv("AIRTABLE_BASE_ID")
 AIRTABLE_TABLE_NAME = os.getenv("AIRTABLE_TABLE_NAME")
+ADMIN_PASSWORD_HASH = os.getenv("ADMIN_PASSWORD_HASH", "").encode("utf-8")  # bcrypt hash
 
 # Mount static folder
 app.mount("/static", StaticFiles(directory="static"), name="static")
@@ -78,11 +80,12 @@ class AdminLogin(BaseModel):
 
 @app.post("/api/admin/login")
 def admin_login(body: AdminLogin):
-    if not ADMIN_PASSWORD:
-        raise HTTPException(status_code=503, detail="Admin not configured — set ADMIN_PASSWORD env var")
-    if not hmac.compare_digest(body.password, ADMIN_PASSWORD):
+    if not ADMIN_PASSWORD_HASH:
+        raise HTTPException(status_code=503, detail="Admin not configured — set ADMIN_PASSWORD_HASH env var")
+    if not bcrypt.checkpw(body.password.encode("utf-8"), ADMIN_PASSWORD_HASH):
         raise HTTPException(status_code=401, detail="Invalid password")
     return {"token": _make_token()}
+
 
 
 def build_exception(status_code: int, detail: str, exc: Exception) -> HTTPException:
@@ -193,7 +196,7 @@ def update_lead_status(record_id: str, body: LeadStatusUpdate):
     try:
         table = get_airtable_table()
         table.update(record_id, {"Status": body.status})
-        return {"success": True, "id": record_id, "status": body.status}
+        return {"success": True, "id": record_id, "Status": body.status}
     except Exception as exc:
         raise build_exception(500, "Failed to update lead status", exc) from exc
 
