@@ -1,18 +1,12 @@
 from fastapi import APIRouter, Depends, HTTPException
-from pydantic import BaseModel, Field
+
+
+from schemas.models import AdminLogin, LeadStatusUpdate
 from core.auth import verify_admin_token, verify_password, _make_token
 from services.airtable import fetch_all_leads, update_lead
 from core.exceptions import build_exception
 
 router = APIRouter(dependencies=[Depends(verify_admin_token)])
-
-
-class AdminLogin(BaseModel):
-    password: str
-
-
-class LeadStatusUpdate(BaseModel):
-    status: str = Field(..., pattern="^(Nuevo|Contactado|En proceso|Atendido)$")
 
 
 # Login has no admin token dependency — it IS the login
