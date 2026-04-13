@@ -1,0 +1,13 @@
+{
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "Access-Control-Allow-Origin", "value": "https://www.kelugroup.ch" },
+        { "key": "Access-Control-Allow-Methods", "value": "GET, POST, PATCH, OPTIONS" },
+        { "key": "Access-Control-Allow-Headers", "value": "x-api-key, Content-Type, x-admin-token" },
+        { "key": "Access-Control-Max-Age", "value": "86400" }
+      ]
+    }
+  ]
+}
