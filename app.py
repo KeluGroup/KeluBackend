@@ -30,7 +30,7 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=ALLOWED_ORIGINS,
     allow_methods=["POST", "GET", "PATCH", "OPTIONS"],
-    allow_headers=["x-api-key", "Content-Type", "x-admin-token", "application/json"],
+    allow_headers=["x-api-key", "Content-Type", "x-admin-token"],
 )
 
 
