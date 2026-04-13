@@ -2,3 +2,4 @@ fastapi==0.117.1
 email-validator==2.2.0
 pyairtable==3.3.0
 aiofiles==25.1.0
+bcrypt==4.0.1
