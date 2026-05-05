@@ -15,7 +15,7 @@ def create_lead(data: dict) -> dict:
         "Email":   data.get("email"),
         "Company": data.get("company"),
         "Message": data.get("message"),
-        "Services": data.get("service")
+        "Service": data.get("service")
     })
     return {"id": record.get("id"), "status": "created", "received": record.get("fields", {})}
 

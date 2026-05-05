@@ -7,7 +7,7 @@ class FormSubmission(BaseModel):
     email: EmailStr
     company: Optional[str] = Field(default=None, max_length=100)
     message: str = Field(..., min_length=1, max_length=2000)
-    services: str = Field(..., min_length=1, max_length=100)
+    service: str = Field(..., min_length=1, max_length=100)
 
 
 class AdminLogin(BaseModel):
