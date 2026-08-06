@@ -28,7 +28,11 @@ SYSTEM_PROMPT = (
     "latinos en Suiza (arepas, tequeños, empanadas, yuca, pan de bono y más) "
     "para restaurantes, delicatessen y caterers. El tono es cálido, cercano y "
     "apasionado por la cocina latina. Nunca uses emojis en exceso — máximo 3 "
-    "por post. No inventes datos que no conoces."
+    "por post. No inventes datos que no conoces.\n\n"
+    "Formato del campo 'cuerpo': escribilo como se lee un caption profesional "
+    "de Instagram, NUNCA como un solo bloque de texto. Cada punto de la "
+    "estructura pedida va en su propio párrafo corto (1-3 oraciones), separado "
+    "del siguiente por un salto de línea doble (\\n\\n) dentro del string JSON."
 )
 
 _client = None
@@ -62,10 +66,10 @@ def _generar_post(user_prompt: str) -> dict:
 
 
 def _build_caption(post: dict) -> str:
-    return (
-        f"{post['titulo']}\n\n{post['cuerpo']}\n\n"
-        + " ".join(f"#{h}" for h in post.get("hashtags", []))
-    )
+    hashtags = " ".join(f"#{h}" for h in post.get("hashtags", []))
+    # Separador visual generoso antes de los hashtags, como en un caption
+    # profesional de IG (evita que queden pegados al último párrafo).
+    return f"{post['titulo']}\n\n{post['cuerpo']}\n\n.\n.\n{hashtags}"
 
 
 # ══════════════════════════════════════════════════════════════════
@@ -87,17 +91,17 @@ INGREDIENTES:
 PASOS QUE VAN EN CADA SLIDE (en este orden, las fotos son de apoyo sin texto superpuesto):
 {pasos}
 
-Estructura del caption:
+Estructura del caption (cada número = un párrafo propio, separado por \n\n):
 1. Gancho que despierte el antojo o el recuerdo, invitando a deslizar el carrusel.
 2. Breve intro a la receta (1-2 oraciones).
-3. Lista de ingredientes.
+3. Lista de ingredientes, cada uno en su propia línea con un guion ("- ingrediente").
 4. Menciona brevemente que el carrusel muestra el paso a paso.
 5. Cierre con CTA a Kelu (somos distribuidor B2B — la CTA es para restaurantes/caterers que quieran estos productos, no venta directa al consumidor) y pregunta para comentarios.
 
 JSON exacto:
 {{
   "titulo": "Gancho de máximo 60 caracteres",
-  "cuerpo": "Caption completo máximo 220 palabras siguiendo la estructura, incluyendo la lista de ingredientes",
+  "cuerpo": "Caption completo máximo 220 palabras, párrafos separados por \\n\\n como se indicó arriba, incluyendo la lista de ingredientes",
   "hashtags": ["12-15 hashtags en español e inglés sin símbolo, incluir siempre: kelu, kelusuiza, cocinalatina, {recipe['category'].lower().replace(' ', '')}"]
 }}
 
@@ -191,16 +195,16 @@ def _build_tip_dato_prompt(trend: dict) -> str:
 TENDENCIA/TEMA: {trend['tema']}
 ÁNGULO: {trend['angulo']}
 
-Estructura del post:
+Estructura del post (cada número = un párrafo propio, separado por \n\n):
 1. Gancho tipo '¿Sabías que...?' o que conecte con la tendencia.
 2. Desarrollo del dato/tendencia en 2-3 oraciones, con tono cercano y educativo, conectándolo con la cocina latina.
 3. Conexión breve con Kelu (distribuidor B2B de productos latinos en Suiza) — sin inventar productos específicos si no aplica.
-4. Pregunta para comentarios.
+4. Pregunta para comentarios (en su propio párrafo, sola).
 
 JSON exacto:
 {{
   "titulo": "Gancho de máximo 60 caracteres",
-  "cuerpo": "Post completo máximo 200 palabras siguiendo la estructura",
+  "cuerpo": "Post completo máximo 200 palabras, párrafos separados por \\n\\n como se indicó arriba",
   "hashtags": ["12-15 hashtags en español e inglés sin símbolo, incluir siempre: kelu, kelusuiza, cocinalatina, tendenciasgastronomicas"],
   "keywords_foto": ["variante 1 de 3-4 palabras EN INGLÉS relacionada al tema", "variante 2 de 3-4 palabras EN INGLÉS, ángulo distinto del mismo tema"]
 }}
@@ -322,7 +326,7 @@ TEMA: {dato['tema']}
 DATO CURIOSO: {dato['dato']}
 {producto_line}
 
-Estructura del post:
+Estructura del post (cada número = un párrafo propio, separado por \n\n):
 1. Gancho tipo '¿Sabías que...?' o similar, que genere curiosidad.
 2. El dato curioso desarrollado en 2-3 oraciones, con tono cercano y educativo.
 3. Si hay producto Kelu relacionado, mencionarlo brevemente (Kelu es distribuidor B2B, la mención es para restaurantes/caterers, no venta directa). Si no, cerrar con una reflexión o pregunta.
@@ -330,7 +334,7 @@ Estructura del post:
 JSON exacto:
 {{
   "titulo": "Gancho de máximo 60 caracteres, tipo pregunta",
-  "cuerpo": "Post completo máximo 180 palabras siguiendo la estructura",
+  "cuerpo": "Post completo máximo 180 palabras, párrafos separados por \\n\\n como se indicó arriba",
   "hashtags": ["12-15 hashtags en español e inglés sin símbolo, incluir siempre: kelu, kelusuiza, datoscuriosos, cocinalatina, culturalatina"],
   "keywords_foto": ["variante 1 de 3-4 palabras EN INGLÉS relacionada al tema", "variante 2 de 3-4 palabras EN INGLÉS, ángulo distinto del mismo tema"]
 }}
