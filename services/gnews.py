@@ -45,15 +45,23 @@ def _fetch_from_gnews(query: str) -> dict | None:
         return None
 
 
-def get_trend(fallback_index: int, query: str = "cocina latina OR gastronomía latina OR tendencias gastronomicas") -> dict:
+# Términos simples (sin OR) — el operador OR combinado con el límite de
+# artículos de +30 días del plan gratis de GNews suele devolver 0 resultados.
+GNEWS_QUERIES = ["cocina latina", "gastronomía", "tendencias gastronómicas", "restaurantes tendencias"]
+
+
+def get_trend(fallback_index: int, query: str | None = None) -> dict:
     """
     Devuelve {"tema", "angulo", "fuente"} — intenta GNews primero (tendencia real),
-    y si no hay API key configurada o la consulta falla, usa el listado curado
+    rotando entre unos pocos términos de búsqueda simples, y si no hay API key
+    configurada o ninguna consulta trae resultados, usa el listado curado
     rotando por `fallback_index`.
     """
-    trend = _fetch_from_gnews(query)
-    if trend:
-        return trend
+    queries = [query] if query else GNEWS_QUERIES
+    for q in queries:
+        trend = _fetch_from_gnews(q)
+        if trend:
+            return trend
 
     fallback = FALLBACK_TRENDS[fallback_index % len(FALLBACK_TRENDS)]
     return {"tema": fallback["tema"], "angulo": fallback["angulo"], "fuente": "fallback"}
