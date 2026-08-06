@@ -20,5 +20,5 @@ class LeadStatusUpdate(BaseModel):
 
 class ContentTrigger(BaseModel):
     """Body opcional del POST /api/cron/kelu-receta para forzar un contenido puntual."""
-    content_type: Optional[str] = Field(default=None, pattern="^(receta|tendencia|carrusel|dato_curioso)$")
+    content_type: Optional[str] = Field(default=None, pattern="^(weekly_recipe|midweek_tip_dato|midweek_tip_foto)$")
     index: Optional[int] = Field(default=None, ge=0)

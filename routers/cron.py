@@ -12,8 +12,8 @@ router = APIRouter(dependencies=[Depends(verify_cron_secret)])
 def cron_kelu_receta():
     """
     Llamado por el cron de Vercel una vez al día (ver vercel.json).
-    Rota entre 4 tipos de contenido: receta de la semana, tendencia gastronómica,
-    carrusel de logística/distribución y dato curioso.
+    Lunes: receta de la semana (carrusel). Martes/Jueves/Sábado: dato +
+    tendencia (GNews o fallback). Miércoles/Viernes/Domingo: dato curioso.
     También se puede probar manualmente:
         GET /api/cron/kelu-receta?secret=<CRON_SECRET>
     """
@@ -31,11 +31,12 @@ def cron_kelu_receta_trigger(body: ContentTrigger):
     y la rotación automática. Útil para pruebas:
         POST /api/cron/kelu-receta
         Authorization: Bearer <CRON_SECRET>
-        { "content_type": "carrusel", "index": 1 }
+        { "content_type": "midweek_tip_dato", "index": 0 }
 
-    content_type: "receta" | "tendencia" | "carrusel" | "dato_curioso" (default "receta")
+    content_type: "weekly_recipe" | "midweek_tip_dato" | "midweek_tip_foto" (default "weekly_recipe")
+    index: solo aplica a los dos tipos "midweek_*" (rotación del fallback curado).
     """
-    tipo = body.content_type or "receta"
+    tipo = body.content_type or "weekly_recipe"
     if tipo not in CONTENT_MAP:
         raise build_exception(
             400,
@@ -43,18 +44,9 @@ def cron_kelu_receta_trigger(body: ContentTrigger):
             ValueError("invalid content_type"),
         )
 
-    publicar_fn, items = CONTENT_MAP[tipo]
     index = body.index if body.index is not None else 0
-    if index >= len(items):
-        raise build_exception(
-            400,
-            f"index inválido para '{tipo}'. Debe estar entre 0 y {len(items) - 1}.",
-            ValueError("index out of range"),
-        )
-
     try:
-        item = items[index]
-        result = publicar_fn(item)
+        result = CONTENT_MAP[tipo](index)
         return {"success": True, "content_type": tipo, **result}
     except Exception as exc:
         raise build_exception(500, "Failed to publish forced content", exc) from exc

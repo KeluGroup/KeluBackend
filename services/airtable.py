@@ -1,4 +1,4 @@
-import re
+import json
 from datetime import datetime, timezone
 from pyairtable import Api
 from config import (
@@ -6,6 +6,7 @@ from config import (
     AIRTABLE_BASE_ID,
     AIRTABLE_TABLE_NAME,
     AIRTABLE_SOCIALPOSTS_TABLE_NAME,
+    AIRTABLE_RECIPES_TABLE_NAME,
 )
 
 
@@ -49,77 +50,99 @@ def update_lead(record_id: str, status: str) -> None:
     get_airtable_table().update(record_id, {"Status": status})
 
 
-# ── SocialPosts (recetas Kelu en Instagram / Facebook) ────────────
+# ── SocialPosts (automatización de contenido v2) ──────────────────
 #
 # Tabla Airtable "SocialPosts" con columnas:
-#   Platform      (single line text)   "kelu_receta_ig" | "kelu_receta_fb"
-#   Status        (single line text)   "published" | "failed"
-#   Receta        (single line text)   nombre de la receta
-#   Caption       (long text)
-#   Hashtags      (long text, separados por coma)
-#   SourceUrl     (url)                foto usada
-#   PlatformId    (single line text)   id del post en IG/FB
-#   PlatformUrl   (url)
-#   Error         (long text)
-#   PublishedAt   (date, con hora)
-#   CreatedAt     (date, con hora)     se completa siempre, éxito o fallo
+#   PostType   (single line text)  "weekly_recipe" | "midweek_tip_dato" | "midweek_tip_foto"
+#   Topic      (single line text)  tema/título del post
+#   Caption    (long text)
+#   Angulo     (single line text)  ángulo de tendencia usado, si hubo
+#   Fuente     (single line text)  "gnews" | "fallback"
+#   PhotoIds   (long text)         IDs de fotos de Unsplash usadas, separados por coma
+#
+# Solo se crea un registro cuando la publicación fue exitosa — esta tabla
+# es el registro de lo publicado, no un log de intentos.
 
 def get_socialposts_table():
     return get_airtable_table(AIRTABLE_SOCIALPOSTS_TABLE_NAME)
 
 
-def create_social_post(data: dict) -> dict:
-    now_iso = datetime.now(timezone.utc).isoformat()
+def create_social_post(post_type: str, topic: str, caption: str,
+                        angulo: str = "", fuente: str = "",
+                        photo_ids: list[str] | None = None) -> dict:
     fields = {
-        "Platform":    data.get("platform"),
-        "Status":      data.get("status"),
-        "Receta":      data.get("receta"),
-        "Caption":     data.get("caption"),
-        "Hashtags":    ", ".join(data.get("hashtags", []) or []),
-        "SourceUrl":   data.get("source_url"),
-        "PlatformId":  data.get("platform_id"),
-        "PlatformUrl": data.get("platform_url"),
-        "Error":       data.get("error"),
-        "PublishedAt": data.get("published_at"),
-        "CreatedAt":   now_iso,
+        "PostType": post_type,
+        "Topic":    topic,
+        "Caption":  caption,
+        "Angulo":   angulo,
+        "Fuente":   fuente,
+        "PhotoIds": ", ".join(photo_ids or []),
     }
-    # Airtable no acepta valores None en la creación — se limpian
-    fields = {k: v for k, v in fields.items() if v is not None}
+    fields = {k: v for k, v in fields.items() if v}
     record = get_socialposts_table().create(fields)
     return {"id": record.get("id"), "fields": record.get("fields", {})}
 
 
-def has_published_today(platform: str | None = None) -> bool:
-    """Guard diario: ¿ya se publicó exitosamente hoy contenido de Kelu?
-
-    Si se pasa `platform`, chequea esa plataforma puntual. Si no, chequea
-    cualquier contenido de Kelu (receta, tendencia, carrusel, dato curioso).
-    """
+def has_published_today() -> bool:
+    """Guard diario: ¿ya se publicó exitosamente algo hoy?"""
     today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
-    if platform:
-        platform_clause = f"{{Platform}} = '{platform}'"
-    else:
-        platform_clause = "AND(FIND('kelu_', {Platform}) = 1, FIND('_ig', {Platform}) > 0)"
-    formula = (
-        f"AND({platform_clause}, "
-        f"{{Status}} = 'published', "
-        f"IS_SAME({{CreatedAt}}, '{today}', 'day'))"
-    )
+    formula = f"IS_SAME(CREATED_TIME(), '{today}', 'day')"
     records = get_socialposts_table().all(formula=formula, max_records=1)
     return len(records) > 0
 
 
-def get_used_photo_ids(limit: int = 300) -> set:
-    """IDs de fotos de Unsplash ya usadas en posts recientes, para no repetirlas."""
-    records = get_socialposts_table().all(
-        fields=["SourceUrl"], sort=["-CreatedAt"], max_records=limit
-    )
+def get_used_photo_ids(limit: int = 500) -> set:
+    """IDs de fotos de Unsplash ya usadas en posts anteriores, para no repetirlas."""
+    records = get_socialposts_table().all(fields=["PhotoIds"], max_records=limit)
     ids = set()
     for r in records:
-        url = r.get("fields", {}).get("SourceUrl")
-        if not url:
-            continue
-        match = re.search(r"photo-([a-zA-Z0-9_-]+)", url)
-        if match:
-            ids.add(match.group(1))
+        raw = r.get("fields", {}).get("PhotoIds", "")
+        if raw:
+            ids.update(p.strip() for p in raw.split(",") if p.strip())
     return ids
+
+
+# ── Recipes (recetas semanales, fuente de la tabla de carruseles) ────
+#
+# Tabla Airtable "Recipes" con columnas:
+#   Category         (single line text)  país/categoría, rota semanalmente
+#   Title            (single line text)
+#   Description      (long text)
+#   IngredientsJson  (long text)  JSON: lista de strings
+#   StepsJson        (long text)  JSON: lista de {titulo, contenido}
+#   Distributed      (checkbox)   si ya se publicó el carrusel correspondiente
+
+def get_recipes_table():
+    return get_airtable_table(AIRTABLE_RECIPES_TABLE_NAME)
+
+
+def get_next_recipe() -> dict | None:
+    """
+    Próxima receta no distribuida (se respeta el orden de creación, que define
+    la rotación semanal de categorías). Si ya se distribuyeron todas, recicla
+    el pool completo en vez de quedarse sin contenido.
+    """
+    table = get_recipes_table()
+    pending = table.all(formula="NOT({Distributed})")
+    if not pending:
+        all_records = table.all()
+        if not all_records:
+            return None
+        for r in all_records:
+            table.update(r["id"], {"Distributed": False})
+        pending = all_records
+
+    record = pending[0]
+    fields = record.get("fields", {})
+    return {
+        "id": record["id"],
+        "category": fields.get("Category", ""),
+        "title": fields.get("Title", ""),
+        "description": fields.get("Description", ""),
+        "ingredients": json.loads(fields.get("IngredientsJson") or "[]"),
+        "steps": json.loads(fields.get("StepsJson") or "[]"),
+    }
+
+
+def mark_recipe_distributed(record_id: str) -> None:
+    get_recipes_table().update(record_id, {"Distributed": True})
