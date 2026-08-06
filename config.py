@@ -8,3 +8,16 @@ ADMIN_PASSWORD_HASH = os.getenv("ADMIN_PASSWORD_HASH", "").encode("utf-8")
 AIRTABLE_API_KEY    = os.getenv("AIRTABLE_API_KEY")
 AIRTABLE_BASE_ID    = os.getenv("AIRTABLE_BASE_ID")
 AIRTABLE_TABLE_NAME = os.getenv("AIRTABLE_TABLE_NAME")
+
+# ── Recetas Kelu (Instagram / Facebook autopost) ──────
+AIRTABLE_SOCIALPOSTS_TABLE_NAME = os.getenv("AIRTABLE_SOCIALPOSTS_TABLE_NAME", "SocialPosts")
+
+OPENAI_API_KEY       = os.getenv("OPENAI_API_KEY")
+UNSPLASH_ACCESS_KEY  = os.getenv("UNSPLASH_ACCESS_KEY")
+
+KELU_IG_ACCESS_TOKEN = os.getenv("KELU_IG_ACCESS_TOKEN")
+KELU_IG_ACCOUNT_ID   = os.getenv("KELU_IG_ACCOUNT_ID")
+KELU_FB_PAGE_ID      = os.getenv("KELU_FB_PAGE_ID")
+KELU_FB_PAGE_TOKEN   = os.getenv("KELU_FB_PAGE_TOKEN")
+
+CRON_SECRET          = os.getenv("CRON_SECRET")

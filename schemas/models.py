@@ -16,3 +16,9 @@ class AdminLogin(BaseModel):
 
 class LeadStatusUpdate(BaseModel):
     status: str = Field(..., pattern="^(Nuevo|Contactado|En proceso|Atendido)$")
+
+
+class ContentTrigger(BaseModel):
+    """Body opcional del POST /api/cron/kelu-receta para forzar un contenido puntual."""
+    content_type: Optional[str] = Field(default=None, pattern="^(receta|tendencia|carrusel|dato_curioso)$")
+    index: Optional[int] = Field(default=None, ge=0)
