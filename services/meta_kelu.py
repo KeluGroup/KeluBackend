@@ -1,5 +1,6 @@
 import json
 import random
+import time
 
 import requests
 from config import (
@@ -12,6 +13,30 @@ from config import (
 
 GRAPH_VERSION = "v19.0"
 GRAPH_BASE = f"https://graph.facebook.com/{GRAPH_VERSION}"
+
+
+def _wait_for_ig_container(creation_id: str, max_wait_seconds: int = 60, interval: int = 2) -> None:
+    """
+    Instagram procesa cada media container de forma asíncrona (descarga la
+    imagen, la valida, etc.). Publicar antes de que el status_code sea
+    FINISHED falla con "Media ID is not available" — así que esperamos.
+    """
+    elapsed = 0
+    while elapsed < max_wait_seconds:
+        resp = requests.get(
+            f"{GRAPH_BASE}/{creation_id}",
+            params={"fields": "status_code", "access_token": KELU_IG_ACCESS_TOKEN},
+            timeout=15,
+        )
+        data = resp.json()
+        status_code = data.get("status_code")
+        if status_code == "FINISHED":
+            return
+        if status_code == "ERROR":
+            raise RuntimeError(f"Instagram no pudo procesar el media container {creation_id}: {data}")
+        time.sleep(interval)
+        elapsed += interval
+    raise RuntimeError(f"Timeout esperando que el media container IG {creation_id} esté listo")
 
 
 def fetch_foto_unsplash(query_variants: list[str], avoid_ids: set | None = None) -> dict | None:
@@ -75,6 +100,7 @@ def publish_to_instagram(image_url: str, caption: str) -> dict:
         raise RuntimeError(f"Error creando media container IG: {create_data}")
 
     creation_id = create_data["id"]
+    _wait_for_ig_container(creation_id)
 
     publish_resp = requests.post(
         f"{GRAPH_BASE}/{KELU_IG_ACCOUNT_ID}/media_publish",
@@ -132,7 +158,9 @@ def publish_carousel_to_instagram(image_urls: list[str], caption: str) -> dict:
         data = resp.json()
         if not resp.ok:
             raise RuntimeError(f"Error creando slide del carrusel IG: {data}")
-        child_ids.append(data["id"])
+        child_id = data["id"]
+        _wait_for_ig_container(child_id)
+        child_ids.append(child_id)
 
     container_resp = requests.post(
         f"{GRAPH_BASE}/{KELU_IG_ACCOUNT_ID}/media",
@@ -147,6 +175,8 @@ def publish_carousel_to_instagram(image_urls: list[str], caption: str) -> dict:
     container_data = container_resp.json()
     if not container_resp.ok:
         raise RuntimeError(f"Error creando contenedor de carrusel IG: {container_data}")
+
+    _wait_for_ig_container(container_data["id"])
 
     publish_resp = requests.post(
         f"{GRAPH_BASE}/{KELU_IG_ACCOUNT_ID}/media_publish",
