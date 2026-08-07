@@ -1,0 +1,1422 @@
+{
+  "tequenos_clasicos": {
+    "en": {
+      "title": "Classic Venezuelan Tequeños",
+      "teaser": "The must-have at every Venezuelan party: crispy dough sticks filled with melted white cheese.",
+      "ingredients": [
+        "500 g all-purpose flour",
+        "2 large eggs, at room temperature",
+        "100 g unsalted butter, softened",
+        "1 teaspoon salt",
+        "1 teaspoon sugar",
+        "400 g hard white cheese (telita, Llanero, or paisa cheese), cut into 1 cm sticks",
+        "Cold water, as needed",
+        "Plenty of vegetable oil for frying"
+      ],
+      "steps": [
+        {
+          "titulo": "Knead the dough",
+          "contenido": "Mix the flour, eggs, butter, salt, and sugar. Gradually add cold water while kneading until you achieve a smooth and elastic dough that doesn't stick to your hands, about 8 minutes."
+        },
+        {
+          "titulo": "Let it rest",
+          "contenido": "Form a ball, cover with plastic wrap, and let it rest for 20 minutes at room temperature so the gluten relaxes and it's easier to roll out."
+        },
+        {
+          "titulo": "Prepare the cheese",
+          "contenido": "While the dough rests, cut the cheese into even sticks, 1 cm thick and 6-7 cm long."
+        },
+        {
+          "titulo": "Roll and cut",
+          "contenido": "Roll out the dough very thin, about 2-3 mm thick, and cut into strips 1.5 cm wide."
+        },
+        {
+          "titulo": "Wrap in spiral",
+          "contenido": "Wrap each cheese stick with a strip of dough in a spiral, slightly overlapping each turn and sealing the ends well to prevent the cheese from escaping when frying."
+        },
+        {
+          "titulo": "Fry at 170-180°C",
+          "contenido": "Heat the oil and fry the tequeños in small batches, turning them until evenly golden (3-4 minutes). Do not overcrowd the pot to maintain the temperature."
+        },
+        {
+          "titulo": "Drain and serve",
+          "contenido": "Remove onto paper towels and let rest for 2 minutes — the cheese continues to melt inside. Serve with guasacaca or pink sauce."
+        }
+      ]
+    },
+    "de": {
+      "title": "Klassische Venezolanische Tequeños",
+      "teaser": "Das Muss auf jeder venezolanischen Party: knusprige Teigstangen gefüllt mit geschmolzenem Weißkäse.",
+      "ingredients": [
+        "500 g Weizenmehl (Allzweck)",
+        "2 große Eier, Zimmertemperatur",
+        "100 g ungesalzene Butter, weich",
+        "1 Teelöffel Salz",
+        "1 Teelöffel Zucker",
+        "400 g harter Weißkäse (telita, Llanero oder paisa Käse), in 1 cm Stangen geschnitten",
+        "Kaltes Wasser, nach Bedarf",
+        "Reichlich Pflanzenöl zum Frittieren"
+      ],
+      "steps": [
+        {
+          "titulo": "Teig kneten",
+          "contenido": "Mehl, Eier, Butter, Salz und Zucker mischen. Nach und nach kaltes Wasser hinzufügen und kneten, bis ein glatter und elastischer Teig entsteht, der nicht an den Händen klebt, etwa 8 Minuten."
+        },
+        {
+          "titulo": "Ruhen lassen",
+          "contenido": "Eine Kugel formen, mit Frischhaltefolie abdecken und 20 Minuten bei Raumtemperatur ruhen lassen, damit sich das Gluten entspannt und leichter ausgerollt werden kann."
+        },
+        {
+          "titulo": "Käse vorbereiten",
+          "contenido": "Während der Teig ruht, den Käse in gleichmäßige Stangen von 1 cm Dicke und 6-7 cm Länge schneiden."
+        },
+        {
+          "titulo": "Ausrollen und schneiden",
+          "contenido": "Den Teig sehr dünn ausrollen, etwa 2-3 mm dick, und in 1,5 cm breite Streifen schneiden."
+        },
+        {
+          "titulo": "Spiralig einwickeln",
+          "contenido": "Jede Käsestange mit einem Teigstreifen spiralig einwickeln, dabei jede Runde leicht überlappen und die Enden gut verschließen, damit der Käse beim Frittieren nicht entweicht."
+        },
+        {
+          "titulo": "Bei 170-180°C frittieren",
+          "contenido": "Das Öl erhitzen und die Tequeños in kleinen Chargen frittieren, dabei wenden, bis sie gleichmäßig goldbraun sind (3-4 Minuten). Den Topf nicht überfüllen, um die Temperatur zu halten."
+        },
+        {
+          "titulo": "Abtropfen lassen und servieren",
+          "contenido": "Auf Küchenpapier abtropfen lassen und 2 Minuten ruhen lassen — der Käse schmilzt innen weiter. Mit Guasacaca oder rosa Sauce servieren."
+        }
+      ]
+    },
+    "fr": {
+      "title": "Tequeños Vénézuéliens Classiques",
+      "teaser": "L'incontournable de toute fête vénézuélienne : des bâtonnets de pâte croustillante farcis de fromage blanc fondu.",
+      "ingredients": [
+        "500 g de farine de blé tout usage",
+        "2 gros œufs, à température ambiante",
+        "100 g de beurre non salé, mou",
+        "1 cuillère à café de sel",
+        "1 cuillère à café de sucre",
+        "400 g de fromage blanc dur (telita, Llanero ou fromage paisa), coupé en bâtonnets de 1 cm",
+        "Eau froide, au besoin",
+        "Huile végétale abondante pour la friture"
+      ],
+      "steps": [
+        {
+          "titulo": "Pétrir la pâte",
+          "contenido": "Mélangez la farine, les œufs, le beurre, le sel et le sucre. Ajoutez progressivement de l'eau froide en pétrissant jusqu'à obtenir une pâte lisse et élastique qui ne colle pas aux mains, environ 8 minutes."
+        },
+        {
+          "titulo": "Laisser reposer",
+          "contenido": "Formez une boule, couvrez de film plastique et laissez reposer 20 minutes à température ambiante pour que le gluten se détende et soit plus facile à étaler."
+        },
+        {
+          "titulo": "Préparer le fromage",
+          "contenido": "Pendant que la pâte repose, coupez le fromage en bâtonnets réguliers de 1 cm d'épaisseur sur 6-7 cm de long."
+        },
+        {
+          "titulo": "Étaler et couper",
+          "contenido": "Étalez la pâte très finement, environ 2-3 mm d'épaisseur, et coupez en bandes de 1,5 cm de large."
+        },
+        {
+          "titulo": "Enrouler en spirale",
+          "contenido": "Enroulez chaque bâtonnet de fromage avec une bande de pâte en spirale, en superposant légèrement chaque tour et en scellant bien les extrémités pour que le fromage ne s'échappe pas lors de la friture."
+        },
+        {
+          "titulo": "Frire à 170-180°C",
+          "contenido": "Chauffez l'huile et faites frire les tequeños par petites quantités, en les retournant jusqu'à ce qu'ils soient dorés uniformément (3-4 minutes). Ne surchargez pas la casserole pour maintenir la température."
+        },
+        {
+          "titulo": "Égoutter et servir",
+          "contenido": "Retirez sur du papier absorbant et laissez reposer 2 minutes — le fromage continue de fondre à l'intérieur. Servez avec de la guasacaca ou de la sauce rose."
+        }
+      ]
+    },
+    "it": {
+      "title": "Tequeños Venezuelani Classici",
+      "teaser": "L'immancabile di ogni festa venezuelana: bastoncini di pasta croccante ripieni di formaggio bianco fuso.",
+      "ingredients": [
+        "500 g di farina di frumento per tutti gli usi",
+        "2 uova grandi, a temperatura ambiente",
+        "100 g di burro non salato, morbido",
+        "1 cucchiaino di sale",
+        "1 cucchiaino di zucchero",
+        "400 g di formaggio bianco duro (telita, Llanero o formaggio paisa), tagliato in bastoncini di 1 cm",
+        "Acqua fredda, quanto basta",
+        "Olio vegetale abbondante per friggere"
+      ],
+      "steps": [
+        {
+          "titulo": "Impasta la base",
+          "contenido": "Mescola la farina, le uova, il burro, il sale e lo zucchero. Aggiungi gradualmente acqua fredda mentre impasti, fino a ottenere un impasto liscio ed elastico che non si attacca alle mani, circa 8 minuti."
+        },
+        {
+          "titulo": "Lascia riposare",
+          "contenido": "Forma una palla, copri con pellicola e lascia riposare 20 minuti a temperatura ambiente affinché il glutine si rilassi e sia più facile da stendere."
+        },
+        {
+          "titulo": "Prepara il formaggio",
+          "contenido": "Mentre l'impasto riposa, taglia il formaggio in bastoncini uniformi di 1 cm di spessore per 6-7 cm di lunghezza."
+        },
+        {
+          "titulo": "Stendi e taglia",
+          "contenido": "Stendi l'impasto molto sottile, circa 2-3 mm di spessore, e taglia in strisce larghe 1,5 cm."
+        },
+        {
+          "titulo": "Avvolgi a spirale",
+          "contenido": "Avvolgi ciascun bastoncino di formaggio con una striscia di impasto a spirale, sovrapponendo leggermente ogni giro e sigillando bene le estremità per evitare che il formaggio fuoriesca durante la frittura."
+        },
+        {
+          "titulo": "Friggi a 170-180°C",
+          "contenido": "Riscalda l'olio e friggi i tequeños in piccole quantità, girandoli, fino a doratura uniforme (3-4 minuti). Non sovraccaricare la pentola per mantenere la temperatura."
+        },
+        {
+          "titulo": "Scola e servi",
+          "contenido": "Rimuovi su carta assorbente e lascia riposare 2 minuti — il formaggio continua a sciogliersi all'interno. Servi con guasacaca o salsa rosa."
+        }
+      ]
+    }
+  },
+  "empanadas_carne": {
+    "en": {
+      "title": "Colombian Beef Empanadas",
+      "teaser": "Crunchy yellow corn dough filled with a juicy beef, potato, and spice stew.",
+      "ingredients": [
+        "500 g of pre-cooked yellow corn flour (masarepa)",
+        "500 ml of hot beef broth",
+        "1 teaspoon of color (annatto or paprika)",
+        "300 g of ground beef",
+        "2 medium potatoes, cooked and diced into small cubes",
+        "1 onion and 2 garlic cloves, finely chopped",
+        "1 teaspoon of cumin",
+        "Salt and pepper to taste",
+        "Vegetable oil for sautéing and frying"
+      ],
+      "steps": [
+        {
+          "titulo": "Prepare the filling",
+          "contenido": "Sauté the onion and garlic in a little oil until translucent, add the ground beef, cumin, salt, and pepper, and cook over medium heat for 8-10 minutes until the beef is well cooked and no liquid remains."
+        },
+        {
+          "titulo": "Add the potato",
+          "contenido": "Incorporate the cooked diced potato, mix well, and let the filling cool completely before assembling the empanadas (if it's hot, it will moisten the dough)."
+        },
+        {
+          "titulo": "Prepare the dough",
+          "contenido": "Mix the corn flour with the color and hot broth, kneading until a smooth dough forms that doesn't crack when folded. Let it rest for 5 minutes."
+        },
+        {
+          "titulo": "Form the discs",
+          "contenido": "Take portions of dough, shape into balls, and flatten them between two pieces of plastic to achieve thin discs about 10 cm in diameter."
+        },
+        {
+          "titulo": "Fill and seal",
+          "contenido": "Place a tablespoon of filling in the center, fold the disc in half to form a half-moon, and seal the edges well by pressing with a fork."
+        },
+        {
+          "titulo": "Fry at 175°C",
+          "contenido": "Fry the empanadas in hot oil, in batches, until evenly golden on both sides, about 4-5 minutes."
+        },
+        {
+          "titulo": "Drain and serve",
+          "contenido": "Remove onto absorbent paper and serve hot, with ají or hogao."
+        }
+      ]
+    },
+    "de": {
+      "title": "Kolumbianische Rindfleisch-Empanadas",
+      "teaser": "Knuspriger gelber Maisteig gefüllt mit einem saftigen Rindfleisch-, Kartoffel- und Gewürzeintopf.",
+      "ingredients": [
+        "500 g vorgekochtes gelbes Maismehl (Masarepa)",
+        "500 ml heiße Rinderbrühe",
+        "1 Teelöffel Farbe (Annatto oder Paprika)",
+        "300 g Rinderhackfleisch",
+        "2 mittelgroße Kartoffeln, gekocht und in kleine Würfel geschnitten",
+        "1 Zwiebel und 2 Knoblauchzehen, fein gehackt",
+        "1 Teelöffel Kreuzkümmel",
+        "Salz und Pfeffer nach Geschmack",
+        "Pflanzenöl zum Anbraten und Frittieren"
+      ],
+      "steps": [
+        {
+          "titulo": "Bereite die Füllung vor",
+          "contenido": "Die Zwiebel und den Knoblauch in etwas Öl glasig anbraten, das Rinderhackfleisch, Kreuzkümmel, Salz und Pfeffer hinzufügen und bei mittlerer Hitze 8-10 Minuten kochen, bis das Fleisch gut durchgegart und keine Flüssigkeit mehr vorhanden ist."
+        },
+        {
+          "titulo": "Füge die Kartoffel hinzu",
+          "contenido": "Die gekochten Kartoffelwürfel einarbeiten, gut mischen und die Füllung vollständig abkühlen lassen, bevor die Empanadas geformt werden (wenn sie heiß ist, wird der Teig feucht)."
+        },
+        {
+          "titulo": "Bereite den Teig vor",
+          "contenido": "Das Maismehl mit der Farbe und der heißen Brühe mischen und kneten, bis ein glatter Teig entsteht, der beim Falten nicht reißt. 5 Minuten ruhen lassen."
+        },
+        {
+          "titulo": "Forme die Scheiben",
+          "contenido": "Teigportionen nehmen, zu Kugeln formen und zwischen zwei Plastikfolien zu dünnen Scheiben von etwa 10 cm Durchmesser flachdrücken."
+        },
+        {
+          "titulo": "Füllen und verschließen",
+          "contenido": "Einen Esslöffel Füllung in die Mitte geben, die Scheibe zur Hälfte falten, um einen Halbmond zu formen, und die Ränder gut mit einer Gabel verschließen."
+        },
+        {
+          "titulo": "Bei 175°C frittieren",
+          "contenido": "Die Empanadas in heißem Öl in Chargen frittieren, bis sie auf beiden Seiten gleichmäßig goldbraun sind, etwa 4-5 Minuten."
+        },
+        {
+          "titulo": "Abtropfen lassen und servieren",
+          "contenido": "Auf saugfähigem Papier abtropfen lassen und heiß servieren, mit Ají oder Hogao."
+        }
+      ]
+    },
+    "fr": {
+      "title": "Empanadas Colombiennes au Bœuf",
+      "teaser": "Pâte de maïs jaune croustillante garnie d'un ragoût juteux de bœuf, pommes de terre et épices.",
+      "ingredients": [
+        "500 g de farine de maïs jaune précuite (masarepa)",
+        "500 ml de bouillon de bœuf chaud",
+        "1 cuillère à café de colorant (roucou ou paprika)",
+        "300 g de bœuf haché",
+        "2 pommes de terre moyennes, cuites et coupées en petits cubes",
+        "1 oignon et 2 gousses d'ail, finement hachés",
+        "1 cuillère à café de cumin",
+        "Sel et poivre au goût",
+        "Huile végétale pour faire revenir et frire"
+      ],
+      "steps": [
+        {
+          "titulo": "Préparer la garniture",
+          "contenido": "Faire revenir l'oignon et l'ail dans un peu d'huile jusqu'à ce qu'ils soient translucides, ajouter le bœuf haché, le cumin, le sel et le poivre, et cuire à feu moyen pendant 8-10 minutes jusqu'à ce que le bœuf soit bien cuit et qu'il n'y ait plus de liquide."
+        },
+        {
+          "titulo": "Ajouter la pomme de terre",
+          "contenido": "Incorporer les cubes de pommes de terre cuites, bien mélanger et laisser refroidir complètement la garniture avant de former les empanadas (si elle est chaude, elle humidifiera la pâte)."
+        },
+        {
+          "titulo": "Préparer la pâte",
+          "contenido": "Mélanger la farine de maïs avec le colorant et le bouillon chaud, en pétrissant jusqu'à obtenir une pâte lisse qui ne se fissure pas lorsqu'on la plie. Laisser reposer 5 minutes."
+        },
+        {
+          "titulo": "Former les disques",
+          "contenido": "Prendre des portions de pâte, les façonner en boules et les aplatir entre deux plastiques pour obtenir des disques fins d'environ 10 cm de diamètre."
+        },
+        {
+          "titulo": "Garnir et sceller",
+          "contenido": "Placer une cuillère à soupe de garniture au centre, plier le disque en deux pour former un demi-cercle et bien sceller les bords en pressant avec une fourchette."
+        },
+        {
+          "titulo": "Frire à 175°C",
+          "contenido": "Faire frire les empanadas dans l'huile chaude, par lots, jusqu'à ce qu'elles soient dorées uniformément des deux côtés, environ 4-5 minutes."
+        },
+        {
+          "titulo": "Égoutter et servir",
+          "contenido": "Égoutter sur du papier absorbant et servir chaud, avec du ají ou du hogao."
+        }
+      ]
+    },
+    "it": {
+      "title": "Empanadas Colombiane di Manzo",
+      "teaser": "Pasta di mais gialla croccante ripiena di uno stufato succoso di manzo, patate e spezie.",
+      "ingredients": [
+        "500 g di farina di mais gialla precotta (masarepa)",
+        "500 ml di brodo di carne caldo",
+        "1 cucchiaino di colorante (annatto o paprika)",
+        "300 g di carne di manzo macinata",
+        "2 patate medie, cotte e tagliate a cubetti piccoli",
+        "1 cipolla e 2 spicchi d'aglio, finemente tritati",
+        "1 cucchiaino di cumino",
+        "Sale e pepe a piacere",
+        "Olio vegetale per soffriggere e friggere"
+      ],
+      "steps": [
+        {
+          "titulo": "Prepara il ripieno",
+          "contenido": "Soffriggi la cipolla e l'aglio in un po' d'olio fino a renderli trasparenti, aggiungi la carne macinata, il cumino, il sale e il pepe, e cuoci a fuoco medio per 8-10 minuti fino a quando la carne è ben cotta e non c'è più liquido."
+        },
+        {
+          "titulo": "Aggiungi la patata",
+          "contenido": "Incorpora i cubetti di patate cotte, mescola bene e lascia raffreddare completamente il ripieno prima di assemblare le empanadas (se è caldo, inumidirà la pasta)."
+        },
+        {
+          "titulo": "Prepara la pasta",
+          "contenido": "Mescola la farina di mais con il colorante e il brodo caldo, impastando fino a ottenere un impasto liscio che non si crepa quando viene piegato. Lascia riposare per 5 minuti."
+        },
+        {
+          "titulo": "Forma i dischi",
+          "contenido": "Prendi porzioni di impasto, forma delle palline e appiattiscile tra due fogli di plastica fino a ottenere dischi sottili di circa 10 cm di diametro."
+        },
+        {
+          "titulo": "Riempi e chiudi",
+          "contenido": "Metti un cucchiaio di ripieno al centro, piega il disco a metà per formare una mezzaluna e sigilla bene i bordi premendo con una forchetta."
+        },
+        {
+          "titulo": "Friggi a 175°C",
+          "contenido": "Friggi le empanadas in olio caldo, in lotti, fino a quando sono dorate uniformemente su entrambi i lati, circa 4-5 minuti."
+        },
+        {
+          "titulo": "Scola e servi",
+          "contenido": "Rimuovi su carta assorbente e servi caldo, con ají o hogao."
+        }
+      ]
+    }
+  },
+  "arepas_choclo": {
+    "en": {
+      "title": "Colombian Sweet Corn Arepas",
+      "teaser": "Sweet and fluffy corn arepas, pan-fried to golden perfection and topped with fresh cheese.",
+      "ingredients": [
+        "4 cups of fresh or frozen sweet corn kernels",
+        "2 tablespoons of sugar (adjust according to the sweetness of the corn)",
+        "1 teaspoon of salt",
+        "2 tablespoons of melted butter",
+        "2 tablespoons of pre-cooked corn flour (for body)",
+        "200 g of fresh or farmer's cheese, grated or sliced",
+        "Butter for the pan"
+      ],
+      "steps": [
+        {
+          "titulo": "Process the corn",
+          "contenido": "Blend the corn kernels in a blender or food processor, leaving some texture (not a completely smooth puree)."
+        },
+        {
+          "titulo": "Mix the dry ingredients",
+          "contenido": "Add the sugar, salt, and corn flour to the mixture and combine well."
+        },
+        {
+          "titulo": "Incorporate the butter",
+          "contenido": "Add the melted butter and mix until you achieve a thick, manageable dough."
+        },
+        {
+          "titulo": "Shape the arepas",
+          "contenido": "With wet hands, form discs 1 cm thick and 8-10 cm in diameter."
+        },
+        {
+          "titulo": "Heat the pan",
+          "contenido": "Grease a non-stick skillet or griddle with butter and heat over medium-low heat."
+        },
+        {
+          "titulo": "Cook 4-5 minutes per side",
+          "contenido": "Cook the arepas until evenly golden and a crunchy crust forms, without burning (the corn sugar caramelizes quickly)."
+        },
+        {
+          "titulo": "Serve with cheese",
+          "contenido": "Serve hot, topped with grated fresh cheese that will slightly melt with the heat."
+        }
+      ]
+    },
+    "de": {
+      "title": "Kolumbianische Mais-Arepas",
+      "teaser": "Süße und flauschige Mais-Arepas, in der Pfanne goldbraun gebraten und mit frischem Käse belegt.",
+      "ingredients": [
+        "4 Tassen frische oder gefrorene Maiskörner",
+        "2 Esslöffel Zucker (je nach Süße des Maises anpassen)",
+        "1 Teelöffel Salz",
+        "2 Esslöffel geschmolzene Butter",
+        "2 Esslöffel vorgekochtes Maismehl (für die Konsistenz)",
+        "200 g frischer oder Bauernkäse, gerieben oder in Scheiben",
+        "Butter für die Pfanne"
+      ],
+      "steps": [
+        {
+          "titulo": "Verarbeite den Mais",
+          "contenido": "Die Maiskörner in einem Mixer oder einer Küchenmaschine verarbeiten, dabei etwas Textur belassen (kein komplett glattes Püree)."
+        },
+        {
+          "titulo": "Mische die trockenen Zutaten",
+          "contenido": "Zucker, Salz und Maismehl zur Mischung hinzufügen und gut vermengen."
+        },
+        {
+          "titulo": "Butter einarbeiten",
+          "contenido": "Die geschmolzene Butter hinzufügen und mischen, bis ein dicker, handhabbarer Teig entsteht."
+        },
+        {
+          "titulo": "Forme die Arepas",
+          "contenido": "Mit nassen Händen Scheiben von 1 cm Dicke und 8-10 cm Durchmesser formen."
+        },
+        {
+          "titulo": "Erhitze die Pfanne",
+          "contenido": "Eine Antihaftpfanne oder -platte mit Butter einfetten und bei mittlerer bis niedriger Hitze erhitzen."
+        },
+        {
+          "titulo": "4-5 Minuten pro Seite braten",
+          "contenido": "Die Arepas braten, bis sie gleichmäßig goldbraun sind und eine knusprige Kruste entsteht, ohne zu verbrennen (der Zucker im Mais karamellisiert schnell)."
+        },
+        {
+          "titulo": "Mit Käse servieren",
+          "contenido": "Heiß servieren, mit geriebenem frischem Käse belegt, der durch die Hitze leicht schmilzt."
+        }
+      ]
+    },
+    "fr": {
+      "title": "Arepas de Maïs Doux Colombiennes",
+      "teaser": "Arepas sucrées et moelleuses de maïs tendre, dorées à la poêle et garnies de fromage frais.",
+      "ingredients": [
+        "4 tasses de grains de maïs doux frais ou congelés",
+        "2 cuillères à soupe de sucre (ajuster selon la douceur du maïs)",
+        "1 cuillère à café de sel",
+        "2 cuillères à soupe de beurre fondu",
+        "2 cuillères à soupe de farine de maïs précuite (pour la consistance)",
+        "200 g de fromage frais ou fermier, râpé ou en tranches",
+        "Beurre pour la poêle"
+      ],
+      "steps": [
+        {
+          "titulo": "Traitez le maïs",
+          "contenido": "Mixez les grains de maïs dans un blender ou un robot culinaire, en laissant un peu de texture (pas une purée complètement lisse)."
+        },
+        {
+          "titulo": "Mélangez les ingrédients secs",
+          "contenido": "Ajoutez le sucre, le sel et la farine de maïs au mélange et bien combiner."
+        },
+        {
+          "titulo": "Incorporez le beurre",
+          "contenido": "Ajoutez le beurre fondu et mélangez jusqu'à obtenir une pâte épaisse et maniable."
+        },
+        {
+          "titulo": "Formez les arepas",
+          "contenido": "Avec les mains humides, formez des disques de 1 cm d'épaisseur et de 8-10 cm de diamètre."
+        },
+        {
+          "titulo": "Chauffez la poêle",
+          "contenido": "Graissez une poêle ou une plaque antiadhésive avec du beurre et chauffez à feu moyen-doux."
+        },
+        {
+          "titulo": "Cuire 4-5 minutes de chaque côté",
+          "contenido": "Cuire les arepas jusqu'à ce qu'elles soient dorées uniformément et qu'une croûte croustillante se forme, sans brûler (le sucre du maïs caramélise rapidement)."
+        },
+        {
+          "titulo": "Servez avec du fromage",
+          "contenido": "Servez chaud, garni de fromage frais râpé qui fondra légèrement avec la chaleur."
+        }
+      ]
+    },
+    "it": {
+      "title": "Arepas di Mais Dolce Colombiane",
+      "teaser": "Arepas dolci e soffici di mais tenero, dorate in padella e guarnite con formaggio fresco.",
+      "ingredients": [
+        "4 tazze di chicchi di mais dolce freschi o surgelati",
+        "2 cucchiai di zucchero (regolare in base alla dolcezza del mais)",
+        "1 cucchiaino di sale",
+        "2 cucchiai di burro fuso",
+        "2 cucchiai di farina di mais precotta (per la consistenza)",
+        "200 g di formaggio fresco o contadino, grattugiato o a fette",
+        "Burro per la padella"
+      ],
+      "steps": [
+        {
+          "titulo": "Processa il mais",
+          "contenido": "Frulla i chicchi di mais in un frullatore o robot da cucina, lasciando un po' di consistenza (non una purea completamente liscia)."
+        },
+        {
+          "titulo": "Mescola gli ingredienti secchi",
+          "contenido": "Aggiungi lo zucchero, il sale e la farina di mais al composto e mescola bene."
+        },
+        {
+          "titulo": "Incorpora il burro",
+          "contenido": "Aggiungi il burro fuso e mescola fino a ottenere un impasto denso e maneggevole."
+        },
+        {
+          "titulo": "Forma le arepas",
+          "contenido": "Con le mani umide, forma dischi di 1 cm di spessore e 8-10 cm di diametro."
+        },
+        {
+          "titulo": "Riscalda la padella",
+          "contenido": "Ungi una padella o piastra antiaderente con burro e riscalda a fuoco medio-basso."
+        },
+        {
+          "titulo": "Cuoci 4-5 minuti per lato",
+          "contenido": "Cuoci le arepas fino a quando non sono dorate in modo uniforme e si forma una crosta croccante, senza bruciare (lo zucchero del mais caramellizza rapidamente)."
+        },
+        {
+          "titulo": "Servi con formaggio",
+          "contenido": "Servi caldo, guarnito con formaggio fresco grattugiato che si scioglierà leggermente con il calore."
+        }
+      ]
+    }
+  },
+  "cachapas_maiz": {
+    "en": {
+      "title": "Sweet Corn Pancakes with Cheese",
+      "teaser": "Sweet corn pancakes, golden brown on a griddle and filled with melted cheese.",
+      "ingredients": [
+        "6 ears of sweet corn (or 3 cups of fresh or frozen kernels)",
+        "2 tablespoons of sugar (adjust according to the sweetness of the corn)",
+        "1 teaspoon of salt",
+        "2 tablespoons of melted butter",
+        "1 tablespoon of pre-cooked cornmeal (optional, helps to bind)",
+        "200 g of queso de mano, telita, or mozzarella, sliced",
+        "Extra butter for greasing the griddle"
+      ],
+      "steps": [
+        {
+          "titulo": "Shuck the corn",
+          "contenido": "If using ears of corn, shuck them with a sharp knife."
+        },
+        {
+          "titulo": "Blend the mixture",
+          "contenido": "Blend the corn kernels with sugar, salt, and melted butter until you get a thick puree-like mixture, without adding water."
+        },
+        {
+          "titulo": "Adjust the consistency",
+          "contenido": "If the mixture is too runny, add the tablespoon of cornmeal to thicken it."
+        },
+        {
+          "titulo": "Heat the griddle",
+          "contenido": "Grease a griddle or non-stick pan with butter and heat it over medium heat."
+        },
+        {
+          "titulo": "Cook the pancake",
+          "contenido": "Pour a large ladleful of the mixture and spread it into a circular shape about 1 cm thick; cook for 3-4 minutes until bubbles form and the edges lift."
+        },
+        {
+          "titulo": "Flip and fill",
+          "contenido": "Carefully flip it, cook for another 2-3 minutes, place the cheese on one half, and fold it over itself so the cheese melts with the residual heat."
+        },
+        {
+          "titulo": "Serve hot",
+          "contenido": "Serve immediately, with extra butter on top if desired."
+        }
+      ]
+    },
+    "de": {
+      "title": "Süße Maispfannkuchen mit Käse",
+      "teaser": "Süße Maispfannkuchen, goldbraun auf einer Grillplatte gebacken und mit geschmolzenem Käse gefüllt.",
+      "ingredients": [
+        "6 Maiskolben (oder 3 Tassen frische oder gefrorene Körner)",
+        "2 Esslöffel Zucker (je nach Süße des Maises anpassen)",
+        "1 Teelöffel Salz",
+        "2 Esslöffel geschmolzene Butter",
+        "1 Esslöffel vorgekochtes Maismehl (optional, hilft beim Binden)",
+        "200 g Queso de mano, Telita oder Mozzarella, in Scheiben",
+        "Extra Butter zum Einfetten der Grillplatte"
+      ],
+      "steps": [
+        {
+          "titulo": "Mais entkörnen",
+          "contenido": "Wenn du Maiskolben verwendest, entkörne sie mit einem scharfen Messer."
+        },
+        {
+          "titulo": "Mischung pürieren",
+          "contenido": "Püriere die Maiskörner mit Zucker, Salz und geschmolzener Butter, bis du eine dicke, püreeartige Mischung erhältst, ohne Wasser hinzuzufügen."
+        },
+        {
+          "titulo": "Konsistenz anpassen",
+          "contenido": "Wenn die Mischung zu flüssig ist, füge den Esslöffel Maismehl hinzu, um sie zu verdicken."
+        },
+        {
+          "titulo": "Grillplatte erhitzen",
+          "contenido": "Fette eine Grillplatte oder eine Antihaftpfanne mit Butter ein und erhitze sie bei mittlerer Hitze."
+        },
+        {
+          "titulo": "Pfannkuchen backen",
+          "contenido": "Gieße eine große Kelle der Mischung und verteile sie in einer kreisförmigen Form von etwa 1 cm Dicke; backe 3-4 Minuten, bis sich Blasen bilden und die Ränder sich lösen."
+        },
+        {
+          "titulo": "Wenden und füllen",
+          "contenido": "Vorsichtig wenden, weitere 2-3 Minuten backen, den Käse auf eine Hälfte legen und über sich selbst falten, damit der Käse mit der Restwärme schmilzt."
+        },
+        {
+          "titulo": "Heiß servieren",
+          "contenido": "Sofort servieren, mit extra Butter obendrauf, wenn gewünscht."
+        }
+      ]
+    },
+    "fr": {
+      "title": "Crêpes de Maïs Doux au Fromage",
+      "teaser": "Crêpes de maïs doux, dorées sur une plaque et garnies de fromage fondu.",
+      "ingredients": [
+        "6 épis de maïs doux (ou 3 tasses de grains frais ou congelés)",
+        "2 cuillères à soupe de sucre (ajuster selon la douceur du maïs)",
+        "1 cuillère à café de sel",
+        "2 cuillères à soupe de beurre fondu",
+        "1 cuillère à soupe de farine de maïs précuite (facultatif, aide à lier)",
+        "200 g de queso de mano, telita ou mozzarella, en tranches",
+        "Beurre supplémentaire pour graisser la plaque"
+      ],
+      "steps": [
+        {
+          "titulo": "Égrener le maïs",
+          "contenido": "Si vous utilisez des épis, égrenez-les avec un couteau bien aiguisé."
+        },
+        {
+          "titulo": "Mixer le mélange",
+          "contenido": "Mixez les grains de maïs avec le sucre, le sel et le beurre fondu jusqu'à obtenir une purée épaisse, sans ajouter d'eau."
+        },
+        {
+          "titulo": "Ajuster la consistance",
+          "contenido": "Si le mélange est trop liquide, ajoutez la cuillère de farine de maïs pour l'épaissir."
+        },
+        {
+          "titulo": "Chauffer la plaque",
+          "contenido": "Graissez une plaque ou une poêle antiadhésive avec du beurre et chauffez-la à feu moyen."
+        },
+        {
+          "titulo": "Cuire la crêpe",
+          "contenido": "Versez une grande louche de mélange et étalez-le en forme circulaire d'environ 1 cm d'épaisseur; cuisez 3-4 minutes jusqu'à ce que des bulles se forment et que les bords se détachent."
+        },
+        {
+          "titulo": "Retourner et garnir",
+          "contenido": "Retournez délicatement, cuisez encore 2-3 minutes, placez le fromage sur la moitié et pliez-la sur elle-même pour que le fromage fonde avec la chaleur résiduelle."
+        },
+        {
+          "titulo": "Servir chaud",
+          "contenido": "Servez immédiatement, avec du beurre supplémentaire sur le dessus si désiré."
+        }
+      ]
+    },
+    "it": {
+      "title": "Frittelle di Mais Dolce con Formaggio",
+      "teaser": "Frittelle di mais dolce, dorate su una piastra e farcite con formaggio fuso.",
+      "ingredients": [
+        "6 pannocchie di mais dolce (o 3 tazze di chicchi freschi o surgelati)",
+        "2 cucchiai di zucchero (regolare secondo la dolcezza del mais)",
+        "1 cucchiaino di sale",
+        "2 cucchiai di burro fuso",
+        "1 cucchiaio di farina di mais precotta (opzionale, aiuta a legare)",
+        "200 g di queso de mano, telita o mozzarella, a fette",
+        "Burro extra per ungere la piastra"
+      ],
+      "steps": [
+        {
+          "titulo": "Sgranare il mais",
+          "contenido": "Se usi le pannocchie, sgranale con un coltello affilato."
+        },
+        {
+          "titulo": "Frullare il composto",
+          "contenido": "Frulla i chicchi di mais con lo zucchero, il sale e il burro fuso fino a ottenere un composto denso tipo purea, senza aggiungere acqua."
+        },
+        {
+          "titulo": "Regolare la consistenza",
+          "contenido": "Se il composto è troppo liquido, aggiungi il cucchiaio di farina di mais per addensarlo."
+        },
+        {
+          "titulo": "Scaldare la piastra",
+          "contenido": "Ungi una piastra o una padella antiaderente con burro e scaldala a fuoco medio."
+        },
+        {
+          "titulo": "Cuocere la frittella",
+          "contenido": "Versa un mestolo grande di composto e distribuiscilo in forma circolare di circa 1 cm di spessore; cuoci per 3-4 minuti finché non si formano bolle e i bordi si staccano."
+        },
+        {
+          "titulo": "Girare e farcire",
+          "contenido": "Gira con attenzione, cuoci per altri 2-3 minuti, metti il formaggio su una metà e piegala su se stessa affinché il formaggio si sciolga con il calore residuo."
+        },
+        {
+          "titulo": "Servire caldo",
+          "contenido": "Servi immediatamente, con burro extra sopra se desideri."
+        }
+      ]
+    }
+  },
+  "bunuelos_colombianos": {
+    "en": {
+      "title": "Colombian Buñuelos",
+      "teaser": "Golden, crispy balls of costeño cheese and cassava starch, a must-have on any Colombian Christmas table.",
+      "ingredients": [
+        "300 g grated costeño cheese (or fresh curd)",
+        "150 g cassava starch",
+        "100 g pre-cooked corn flour",
+        "2 eggs",
+        "1 teaspoon baking powder",
+        "1 pinch of salt",
+        "Vegetable oil for deep frying"
+      ],
+      "steps": [
+        {
+          "titulo": "Mix the dry ingredients and cheese",
+          "contenido": "Combine the grated cheese with the cassava starch, corn flour, baking powder, and salt."
+        },
+        {
+          "titulo": "Add the eggs",
+          "contenido": "Incorporate the beaten eggs and knead with your hands until you achieve a uniform, moist but manageable dough (if it's too sticky, add a bit more starch)."
+        },
+        {
+          "titulo": "Shape the balls",
+          "contenido": "Form even balls about 4 cm in diameter, rolling them between your palms until smooth and crack-free (cracks can cause them to burst while frying)."
+        },
+        {
+          "titulo": "Heat the oil over medium-low heat",
+          "contenido": "It's crucial that the oil isn't too hot (about 160°C), so the buñuelo cooks inside before browning outside."
+        },
+        {
+          "titulo": "Fry, stirring constantly",
+          "contenido": "Submerge the buñuelos and gently move them with a slotted spoon throughout the process to ensure even browning, 8-10 minutes."
+        },
+        {
+          "titulo": "Check the doneness",
+          "contenido": "They should be evenly golden on the outside and fluffy without a raw center — if they brown too quickly on the outside, lower the heat."
+        },
+        {
+          "titulo": "Drain and serve",
+          "contenido": "Remove onto absorbent paper and serve hot, alone or with hot chocolate."
+        }
+      ]
+    },
+    "de": {
+      "title": "Kolumbianische Buñuelos",
+      "teaser": "Goldene, knusprige Bällchen aus costeño Käse und Maniokstärke, ein Muss auf jedem kolumbianischen Weihnachtstisch.",
+      "ingredients": [
+        "300 g geriebener costeño Käse (oder frischer Quark)",
+        "150 g Maniokstärke",
+        "100 g vorgekochtes Maismehl",
+        "2 Eier",
+        "1 Teelöffel Backpulver",
+        "1 Prise Salz",
+        "Pflanzenöl zum Frittieren"
+      ],
+      "steps": [
+        {
+          "titulo": "Mische die trockenen Zutaten und den Käse",
+          "contenido": "Kombiniere den geriebenen Käse mit der Maniokstärke, dem Maismehl, dem Backpulver und dem Salz."
+        },
+        {
+          "titulo": "Füge die Eier hinzu",
+          "contenido": "Die geschlagenen Eier einarbeiten und mit den Händen kneten, bis ein gleichmäßiger, feuchter, aber handhabbarer Teig entsteht (wenn er zu klebrig ist, etwas mehr Stärke hinzufügen)."
+        },
+        {
+          "titulo": "Forme die Bällchen",
+          "contenido": "Forme gleichmäßige Bällchen von etwa 4 cm Durchmesser, indem du sie zwischen den Handflächen rollst, bis sie glatt und rissfrei sind (Risse können dazu führen, dass sie beim Frittieren aufplatzen)."
+        },
+        {
+          "titulo": "Erhitze das Öl bei mittlerer bis niedriger Hitze",
+          "contenido": "Es ist wichtig, dass das Öl nicht zu heiß ist (ca. 160°C), damit der Buñuelo innen gar wird, bevor er außen bräunt."
+        },
+        {
+          "titulo": "Frittieren, dabei ständig rühren",
+          "contenido": "Tauche die Buñuelos ein und bewege sie während des gesamten Prozesses sanft mit einem Schaumlöffel, um eine gleichmäßige Bräunung zu gewährleisten, 8-10 Minuten."
+        },
+        {
+          "titulo": "Überprüfe den Gargrad",
+          "contenido": "Sie sollten außen gleichmäßig goldbraun und innen fluffig sein, ohne rohen Kern — wenn sie außen zu schnell bräunen, die Hitze reduzieren."
+        },
+        {
+          "titulo": "Abtropfen lassen und servieren",
+          "contenido": "Auf saugfähigem Papier abtropfen lassen und heiß servieren, allein oder mit heißer Schokolade."
+        }
+      ]
+    },
+    "fr": {
+      "title": "Buñuelos Colombiens",
+      "teaser": "Boulettes dorées et croustillantes de fromage costeño et de fécule de manioc, incontournables sur toute table de Noël colombienne.",
+      "ingredients": [
+        "300 g de fromage costeño râpé (ou caillé frais)",
+        "150 g de fécule de manioc",
+        "100 g de farine de maïs précuite",
+        "2 œufs",
+        "1 cuillère à café de levure chimique",
+        "1 pincée de sel",
+        "Huile végétale pour friture"
+      ],
+      "steps": [
+        {
+          "titulo": "Mélangez les ingrédients secs et le fromage",
+          "contenido": "Combinez le fromage râpé avec la fécule de manioc, la farine de maïs, la levure chimique et le sel."
+        },
+        {
+          "titulo": "Ajoutez les œufs",
+          "contenido": "Incorporez les œufs battus et pétrissez avec les mains jusqu'à obtenir une pâte uniforme, humide mais maniable (si elle est trop collante, ajoutez un peu plus de fécule)."
+        },
+        {
+          "titulo": "Formez les boulettes",
+          "contenido": "Formez des boulettes uniformes d'environ 4 cm de diamètre, en les roulant entre vos paumes jusqu'à ce qu'elles soient lisses et sans fissures (les fissures peuvent les faire éclater à la friture)."
+        },
+        {
+          "titulo": "Chauffez l'huile à feu moyen-doux",
+          "contenido": "Il est crucial que l'huile ne soit pas trop chaude (environ 160°C), pour que le buñuelo cuise à l'intérieur avant de dorer à l'extérieur."
+        },
+        {
+          "titulo": "Faites frire en remuant constamment",
+          "contenido": "Plongez les buñuelos et déplacez-les doucement avec une écumoire tout au long du processus pour assurer un brunissement uniforme, 8-10 minutes."
+        },
+        {
+          "titulo": "Vérifiez la cuisson",
+          "contenido": "Ils doivent être uniformément dorés à l'extérieur et moelleux, sans centre cru — s'ils dorent trop vite à l'extérieur, baissez le feu."
+        },
+        {
+          "titulo": "Égouttez et servez",
+          "contenido": "Retirez sur du papier absorbant et servez chaud, seuls ou avec du chocolat chaud."
+        }
+      ]
+    },
+    "it": {
+      "title": "Buñuelos Colombiani",
+      "teaser": "Palline dorate e croccanti di formaggio costeño e amido di manioca, immancabili su ogni tavola natalizia colombiana.",
+      "ingredients": [
+        "300 g di formaggio costeño grattugiato (o cagliata fresca)",
+        "150 g di amido di manioca",
+        "100 g di farina di mais precotta",
+        "2 uova",
+        "1 cucchiaino di lievito in polvere",
+        "1 pizzico di sale",
+        "Olio vegetale per friggere"
+      ],
+      "steps": [
+        {
+          "titulo": "Mescola gli ingredienti secchi e il formaggio",
+          "contenido": "Combina il formaggio grattugiato con l'amido di manioca, la farina di mais, il lievito in polvere e il sale."
+        },
+        {
+          "titulo": "Aggiungi le uova",
+          "contenido": "Incorpora le uova sbattute e impasta con le mani fino a ottenere un impasto uniforme, umido ma maneggevole (se è troppo appiccicoso, aggiungi un po' più di amido)."
+        },
+        {
+          "titulo": "Forma le palline",
+          "contenido": "Forma palline uniformi di circa 4 cm di diametro, rotolandole tra i palmi fino a che non siano lisce e senza crepe (le crepe possono farle aprire durante la frittura)."
+        },
+        {
+          "titulo": "Riscalda l'olio a fuoco medio-basso",
+          "contenido": "È fondamentale che l'olio non sia troppo caldo (circa 160°C), affinché il buñuelo cuocia all'interno prima di dorarsi all'esterno."
+        },
+        {
+          "titulo": "Friggi mescolando costantemente",
+          "contenido": "Immergi i buñuelos e muovili delicatamente con una schiumarola durante tutto il processo per garantire una doratura uniforme, 8-10 minuti."
+        },
+        {
+          "titulo": "Verifica la cottura",
+          "contenido": "Devono essere dorati uniformemente all'esterno e soffici, senza un centro crudo — se dorano troppo velocemente all'esterno, abbassa il fuoco."
+        },
+        {
+          "titulo": "Scola e servi",
+          "contenido": "Rimuovi su carta assorbente e servi caldi, da soli o con cioccolata calda."
+        }
+      ]
+    }
+  },
+  "pabellon_criollo": {
+    "en": {
+      "title": "Pabellón Criollo",
+      "teaser": "The national dish of Venezuela: shredded beef, black beans, white rice, and ripe plantain slices all on one plate.",
+      "ingredients": [
+        "500 g of flank or brisket",
+        "1 large onion, 1 bell pepper, and 2 cloves of garlic, chopped",
+        "2 ripe tomatoes, chopped",
+        "1 teaspoon of cumin and 1 of oregano",
+        "2 cups of cooked black beans",
+        "2 cups of cooked white rice",
+        "2 ripe plantains",
+        "Vegetable oil, salt, and pepper to taste"
+      ],
+      "steps": [
+        {
+          "titulo": "Cook the meat",
+          "contenido": "Boil the flank in salted water until very tender (1-1.5 hours, or 40 minutes in a pressure cooker). Reserve the broth."
+        },
+        {
+          "titulo": "Shred",
+          "contenido": "Once warm, shred the meat into fine strands using your hands or two forks."
+        },
+        {
+          "titulo": "Prepare the sofrito",
+          "contenido": "Sauté the onion, bell pepper, and garlic until translucent, add the tomato, cumin, and oregano, and cook for 5 minutes."
+        },
+        {
+          "titulo": "Integrate the shredded beef",
+          "contenido": "Incorporate the shredded beef into the sofrito with a bit of the reserved broth, and cook for 10 minutes over medium heat until the flavors meld."
+        },
+        {
+          "titulo": "Heat the black beans",
+          "contenido": "Heat the black beans over low heat with a splash of oil, adjusting salt and cumin to taste."
+        },
+        {
+          "titulo": "Fry the plantain slices",
+          "contenido": "Cut the ripe plantains diagonally and fry them in hot oil until golden on both sides."
+        },
+        {
+          "titulo": "Assemble the dish",
+          "contenido": "Serve the white rice, shredded beef, black beans, and plantain slices on the same plate — the complete pabellón."
+        }
+      ]
+    },
+    "de": {
+      "title": "Pabellón Criollo",
+      "teaser": "Das Nationalgericht Venezuelas: zerkleinertes Rindfleisch, schwarze Bohnen, weißer Reis und reife Kochbananenscheiben auf einem Teller.",
+      "ingredients": [
+        "500 g Flanke oder Bruststück",
+        "1 große Zwiebel, 1 Paprika und 2 Knoblauchzehen, gehackt",
+        "2 reife Tomaten, gehackt",
+        "1 Teelöffel Kreuzkümmel und 1 Teelöffel Oregano",
+        "2 Tassen gekochte schwarze Bohnen",
+        "2 Tassen gekochter weißer Reis",
+        "2 reife Kochbananen",
+        "Pflanzenöl, Salz und Pfeffer nach Geschmack"
+      ],
+      "steps": [
+        {
+          "titulo": "Fleisch kochen",
+          "contenido": "Die Flanke in Salzwasser kochen, bis sie sehr zart ist (1-1,5 Stunden oder 40 Minuten im Schnellkochtopf). Die Brühe aufbewahren."
+        },
+        {
+          "titulo": "Zerkleinern",
+          "contenido": "Sobald es warm ist, das Fleisch mit den Händen oder zwei Gabeln in feine Stränge zerkleinern."
+        },
+        {
+          "titulo": "Das Sofrito vorbereiten",
+          "contenido": "Die Zwiebel, Paprika und den Knoblauch anbraten, bis sie durchsichtig sind, die Tomate, Kreuzkümmel und Oregano hinzufügen und 5 Minuten kochen."
+        },
+        {
+          "titulo": "Das zerkleinerte Fleisch integrieren",
+          "contenido": "Das zerkleinerte Fleisch in das Sofrito mit etwas der aufbewahrten Brühe einarbeiten und 10 Minuten bei mittlerer Hitze kochen, bis sich die Aromen verbinden."
+        },
+        {
+          "titulo": "Die schwarzen Bohnen erhitzen",
+          "contenido": "Die schwarzen Bohnen bei niedriger Hitze mit einem Schuss Öl erhitzen und Salz und Kreuzkümmel nach Geschmack anpassen."
+        },
+        {
+          "titulo": "Die Kochbananenscheiben braten",
+          "contenido": "Die reifen Kochbananen diagonal schneiden und in heißem Öl braten, bis sie auf beiden Seiten goldbraun sind."
+        },
+        {
+          "titulo": "Das Gericht zusammenstellen",
+          "contenido": "Den weißen Reis, das zerkleinerte Fleisch, die schwarzen Bohnen und die Kochbananenscheiben auf demselben Teller servieren — das vollständige Pabellón."
+        }
+      ]
+    },
+    "fr": {
+      "title": "Pabellón Criollo",
+      "teaser": "Le plat national du Venezuela : bœuf effiloché, haricots noirs, riz blanc et tranches de plantain mûr sur une même assiette.",
+      "ingredients": [
+        "500 g de flanchet ou poitrine de bœuf",
+        "1 gros oignon, 1 poivron et 2 gousses d'ail, hachés",
+        "2 tomates mûres, hachées",
+        "1 cuillère à café de cumin et 1 d'origan",
+        "2 tasses de haricots noirs cuits",
+        "2 tasses de riz blanc cuit",
+        "2 plantains mûrs",
+        "Huile végétale, sel et poivre au goût"
+      ],
+      "steps": [
+        {
+          "titulo": "Cuire la viande",
+          "contenido": "Faire bouillir le flanchet dans de l'eau salée jusqu'à ce qu'il soit très tendre (1-1,5 heures, ou 40 minutes dans une cocotte-minute). Réserver le bouillon."
+        },
+        {
+          "titulo": "Effilocher",
+          "contenido": "Une fois tiède, effilocher la viande en fines lamelles avec les mains ou deux fourchettes."
+        },
+        {
+          "titulo": "Préparer le sofrito",
+          "contenido": "Faire revenir l'oignon, le poivron et l'ail jusqu'à ce qu'ils soient translucides, ajouter la tomate, le cumin et l'origan, et cuire 5 minutes."
+        },
+        {
+          "titulo": "Intégrer le bœuf effiloché",
+          "contenido": "Incorporer le bœuf effiloché dans le sofrito avec un peu de bouillon réservé, et cuire 10 minutes à feu moyen jusqu'à ce que les saveurs se mélangent."
+        },
+        {
+          "titulo": "Chauffer les haricots noirs",
+          "contenido": "Chauffer les haricots noirs à feu doux avec un filet d'huile, ajuster le sel et le cumin à votre goût."
+        },
+        {
+          "titulo": "Frire les tranches de plantain",
+          "contenido": "Couper les plantains mûrs en diagonale et les faire frire dans de l'huile chaude jusqu'à ce qu'ils soient dorés des deux côtés."
+        },
+        {
+          "titulo": "Assembler le plat",
+          "contenido": "Servir le riz blanc, le bœuf effiloché, les haricots noirs et les tranches de plantain sur la même assiette — le pabellón complet."
+        }
+      ]
+    },
+    "it": {
+      "title": "Pabellón Criollo",
+      "teaser": "Il piatto nazionale del Venezuela: carne sfilacciata, fagioli neri, riso bianco e fette di platano maturo su un unico piatto.",
+      "ingredients": [
+        "500 g di fianco o petto di manzo",
+        "1 cipolla grande, 1 peperone e 2 spicchi d'aglio, tritati",
+        "2 pomodori maturi, tritati",
+        "1 cucchiaino di cumino e 1 di origano",
+        "2 tazze di fagioli neri cotti",
+        "2 tazze di riso bianco cotto",
+        "2 platani maturi",
+        "Olio vegetale, sale e pepe a piacere"
+      ],
+      "steps": [
+        {
+          "titulo": "Cuoci la carne",
+          "contenido": "Fai bollire il fianco in acqua salata fino a quando è molto tenero (1-1,5 ore, o 40 minuti in pentola a pressione). Conserva il brodo."
+        },
+        {
+          "titulo": "Sfilaccia",
+          "contenido": "Una volta tiepida, sfilaccia la carne in fili sottili usando le mani o due forchette."
+        },
+        {
+          "titulo": "Prepara il soffritto",
+          "contenido": "Soffriggi la cipolla, il peperone e l'aglio fino a renderli traslucidi, aggiungi il pomodoro, il cumino e l'origano, e cuoci per 5 minuti."
+        },
+        {
+          "titulo": "Integra la carne sfilacciata",
+          "contenido": "Incorpora la carne sfilacciata nel soffritto con un po' del brodo conservato, e cuoci per 10 minuti a fuoco medio fino a quando i sapori si amalgamano."
+        },
+        {
+          "titulo": "Scalda i fagioli neri",
+          "contenido": "Scalda i fagioli neri a fuoco basso con un filo d'olio, aggiustando di sale e cumino a piacere."
+        },
+        {
+          "titulo": "Friggi le fette di platano",
+          "contenido": "Taglia i platani maturi in diagonale e friggili in olio caldo fino a dorarli su entrambi i lati."
+        },
+        {
+          "titulo": "Assembla il piatto",
+          "contenido": "Servi il riso bianco, la carne sfilacciata, i fagioli neri e le fette di platano sullo stesso piatto — il pabellón completo."
+        }
+      ]
+    }
+  },
+  "arepas_reina_pepiada": {
+    "en": {
+      "title": "Reina Pepiada Arepas",
+      "teaser": "The most popular Venezuelan arepa: filled with a creamy mixture of shredded chicken and avocado.",
+      "ingredients": [
+        "2 cups (400 g) of pre-cooked corn flour (P.A.N. type)",
+        "2 ½ cups of warm water",
+        "1 teaspoon of salt",
+        "1 tablespoon of oil (optional, adds softness to the dough)",
+        "1 large chicken breast, cooked and shredded",
+        "2 ripe avocados",
+        "2 tablespoons of mayonnaise",
+        "Juice of ½ lemon",
+        "Salt, pepper, and chopped cilantro to taste",
+        "¼ finely chopped onion (optional)"
+      ],
+      "steps": [
+        {
+          "titulo": "Hydrate the flour",
+          "contenido": "Mix the corn flour with salt, gradually add warm water while kneading until you achieve a smooth, lump-free dough that doesn't stick to your hands."
+        },
+        {
+          "titulo": "Let it rest for 5 minutes",
+          "contenido": "This allows the flour to fully hydrate and makes shaping easier."
+        },
+        {
+          "titulo": "Shape the arepas",
+          "contenido": "Divide the dough into 4-6 balls, flatten them between your palms to form discs 1.5 cm thick, even and without cracks on the edges."
+        },
+        {
+          "titulo": "Cook on a griddle",
+          "contenido": "Cook on a griddle or skillet over medium heat, without oil, for 5-7 minutes per side until a golden crust forms."
+        },
+        {
+          "titulo": "Finish in the oven",
+          "contenido": "Transfer the arepas to an oven at 180°C for 15 minutes to cook them through (they should sound hollow when tapped)."
+        },
+        {
+          "titulo": "Prepare the filling",
+          "contenido": "Meanwhile, mix the shredded chicken with mashed avocado, mayonnaise, lemon juice, salt, pepper, and cilantro until you achieve a creamy mixture."
+        },
+        {
+          "titulo": "Fill and serve",
+          "contenido": "Open each arepa halfway without completely separating it, and generously fill with the chicken mixture."
+        }
+      ]
+    },
+    "de": {
+      "title": "Reina Pepiada Arepas",
+      "teaser": "Die beliebteste venezolanische Arepa: gefüllt mit einer cremigen Mischung aus zerkleinertem Huhn und Avocado.",
+      "ingredients": [
+        "2 Tassen (400 g) vorgekochtes Maismehl (Typ P.A.N.)",
+        "2 ½ Tassen warmes Wasser",
+        "1 Teelöffel Salz",
+        "1 Esslöffel Öl (optional, verleiht dem Teig Weichheit)",
+        "1 große Hähnchenbrust, gekocht und zerkleinert",
+        "2 reife Avocados",
+        "2 Esslöffel Mayonnaise",
+        "Saft von ½ Zitrone",
+        "Salz, Pfeffer und gehackter Koriander nach Geschmack",
+        "¼ fein gehackte Zwiebel (optional)"
+      ],
+      "steps": [
+        {
+          "titulo": "Das Mehl hydratisieren",
+          "contenido": "Das Maismehl mit Salz mischen, nach und nach warmes Wasser hinzufügen und kneten, bis ein glatter, klumpenfreier Teig entsteht, der nicht an den Händen klebt."
+        },
+        {
+          "titulo": "5 Minuten ruhen lassen",
+          "contenido": "Dies ermöglicht es dem Mehl, vollständig zu hydratisieren und erleichtert das Formen."
+        },
+        {
+          "titulo": "Die Arepas formen",
+          "contenido": "Den Teig in 4-6 Kugeln teilen, zwischen den Handflächen zu Scheiben von 1,5 cm Dicke formen, gleichmäßig und ohne Risse an den Rändern."
+        },
+        {
+          "titulo": "Auf einer Grillplatte kochen",
+          "contenido": "Auf einer Grillplatte oder Pfanne bei mittlerer Hitze ohne Öl 5-7 Minuten pro Seite kochen, bis sich eine goldene Kruste bildet."
+        },
+        {
+          "titulo": "Im Ofen fertigstellen",
+          "contenido": "Die Arepas in einen Ofen bei 180°C für 15 Minuten geben, um sie durchzugaren (sie sollten hohl klingen, wenn man darauf klopft)."
+        },
+        {
+          "titulo": "Die Füllung vorbereiten",
+          "contenido": "In der Zwischenzeit das zerkleinerte Huhn mit zerdrückter Avocado, Mayonnaise, Zitronensaft, Salz, Pfeffer und Koriander mischen, bis eine cremige Mischung entsteht."
+        },
+        {
+          "titulo": "Füllen und servieren",
+          "contenido": "Jede Arepa zur Hälfte öffnen, ohne sie vollständig zu trennen, und großzügig mit der Hühnerfüllung füllen."
+        }
+      ]
+    },
+    "fr": {
+      "title": "Arepas Reina Pepiada",
+      "teaser": "L'arepa vénézuélienne la plus populaire : farcie d'un mélange crémeux de poulet effiloché et d'avocat.",
+      "ingredients": [
+        "2 tasses (400 g) de farine de maïs précuite (type P.A.N.)",
+        "2 ½ tasses d'eau tiède",
+        "1 cuillère à café de sel",
+        "1 cuillère à soupe d'huile (facultatif, adoucit la pâte)",
+        "1 grande poitrine de poulet, cuite et effilochée",
+        "2 avocats mûrs",
+        "2 cuillères à soupe de mayonnaise",
+        "Jus de ½ citron",
+        "Sel, poivre et coriandre hachée au goût",
+        "¼ d'oignon finement haché (facultatif)"
+      ],
+      "steps": [
+        {
+          "titulo": "Hydrater la farine",
+          "contenido": "Mélangez la farine de maïs avec le sel, ajoutez progressivement l'eau tiède en pétrissant jusqu'à obtenir une pâte lisse, sans grumeaux, qui ne colle pas aux mains."
+        },
+        {
+          "titulo": "Laisser reposer 5 minutes",
+          "contenido": "Cela permet à la farine de s'hydrater complètement et facilite le façonnage."
+        },
+        {
+          "titulo": "Façonner les arepas",
+          "contenido": "Divisez la pâte en 4-6 boules, aplatissez-les entre vos paumes pour former des disques de 1,5 cm d'épaisseur, uniformes et sans fissures sur les bords."
+        },
+        {
+          "titulo": "Cuire sur une plaque",
+          "contenido": "Cuire sur une plaque ou une poêle à feu moyen, sans huile, pendant 5-7 minutes de chaque côté jusqu'à ce qu'une croûte dorée se forme."
+        },
+        {
+          "titulo": "Terminer au four",
+          "contenido": "Transférez les arepas au four à 180°C pendant 15 minutes pour les cuire à cœur (elles doivent sonner creux lorsqu'on les tape)."
+        },
+        {
+          "titulo": "Préparer la garniture",
+          "contenido": "Pendant ce temps, mélangez le poulet effiloché avec l'avocat écrasé, la mayonnaise, le jus de citron, le sel, le poivre et la coriandre jusqu'à obtenir un mélange crémeux."
+        },
+        {
+          "titulo": "Garnir et servir",
+          "contenido": "Ouvrez chaque arepa à moitié sans la séparer complètement, et garnissez généreusement avec le mélange de poulet."
+        }
+      ]
+    },
+    "it": {
+      "title": "Arepas Reina Pepiada",
+      "teaser": "L'arepa venezuelana più popolare: ripiena di un cremoso mix di pollo sfilacciato e avocado.",
+      "ingredients": [
+        "2 tazze (400 g) di farina di mais precotta (tipo P.A.N.)",
+        "2 ½ tazze di acqua tiepida",
+        "1 cucchiaino di sale",
+        "1 cucchiaio di olio (opzionale, rende l'impasto più morbido)",
+        "1 petto di pollo grande, cotto e sfilacciato",
+        "2 avocado maturi",
+        "2 cucchiai di maionese",
+        "Succo di ½ limone",
+        "Sale, pepe e coriandolo tritato a piacere",
+        "¼ di cipolla finemente tritata (opzionale)"
+      ],
+      "steps": [
+        {
+          "titulo": "Idratare la farina",
+          "contenido": "Mescola la farina di mais con il sale, aggiungi gradualmente l'acqua tiepida mentre impasti fino a ottenere un impasto liscio e senza grumi che non si attacca alle mani."
+        },
+        {
+          "titulo": "Lascia riposare per 5 minuti",
+          "contenido": "Questo permette alla farina di idratarsi completamente e facilita la formatura."
+        },
+        {
+          "titulo": "Forma le arepas",
+          "contenido": "Dividi l'impasto in 4-6 palline, appiattiscile tra i palmi delle mani fino a formare dischi di 1,5 cm di spessore, uniformi e senza crepe sui bordi."
+        },
+        {
+          "titulo": "Cuoci su una piastra",
+          "contenido": "Cuoci su una piastra o padella a fuoco medio, senza olio, per 5-7 minuti per lato fino a formare una crosta dorata."
+        },
+        {
+          "titulo": "Termina in forno",
+          "contenido": "Trasferisci le arepas in un forno a 180°C per 15 minuti per cuocerle completamente (dovrebbero suonare vuote quando le si colpisce)."
+        },
+        {
+          "titulo": "Prepara il ripieno",
+          "contenido": "Nel frattempo, mescola il pollo sfilacciato con l'avocado schiacciato, la maionese, il succo di limone, sale, pepe e coriandolo fino a ottenere un composto cremoso."
+        },
+        {
+          "titulo": "Riempi e servi",
+          "contenido": "Apri ogni arepa a metà senza separarla completamente e riempi generosamente con il composto di pollo."
+        }
+      ]
+    }
+  },
+  "pan_de_bono": {
+    "en": {
+      "title": "Colombian Pan de Bono",
+      "teaser": "Elastic and slightly salty rolls made with coastal cheese and cassava starch.",
+      "ingredients": [
+        "500 g sour cassava starch",
+        "300 g grated coastal cheese (or salty fresh cheese)",
+        "100 g grated mozzarella cheese (adds elasticity)",
+        "2 large eggs",
+        "50 g melted butter",
+        "1 teaspoon baking powder",
+        "1 pinch of salt (adjust according to the cheese)"
+      ],
+      "steps": [
+        {
+          "titulo": "Mix the cheeses with the starch",
+          "contenido": "Combine the cassava starch with the grated coastal cheese and mozzarella until you achieve a sandy and uniform mixture."
+        },
+        {
+          "titulo": "Incorporate the wet ingredients",
+          "contenido": "Add the beaten eggs, melted butter, and baking powder. Knead with your hands until you achieve an elastic, slightly sticky dough (this is normal for this recipe)."
+        },
+        {
+          "titulo": "Let it rest for 10 minutes",
+          "contenido": "Cover the dough and let it rest so the starch absorbs the moisture and becomes easier to shape."
+        },
+        {
+          "titulo": "Shape the pieces",
+          "contenido": "With wet hands, form 5 cm balls or shape them into rings or ovals, as you prefer."
+        },
+        {
+          "titulo": "Preheat the oven",
+          "contenido": "Preheat the oven to 200°C with top and bottom heat."
+        },
+        {
+          "titulo": "Bake for 20-25 minutes",
+          "contenido": "Place the rolls on a tray with parchment paper and bake until golden on the outside and they sound hollow when tapped gently."
+        },
+        {
+          "titulo": "Serve warm",
+          "contenido": "Let them cool for 5 minutes before serving — they remain elastic inside with cheese threads."
+        }
+      ]
+    },
+    "de": {
+      "title": "Kolumbianisches Pan de Bono",
+      "teaser": "Elastische und leicht salzige Brötchen aus Küstenkäse und Maniokstärke.",
+      "ingredients": [
+        "500 g saure Maniokstärke",
+        "300 g geriebener Küstenkäse (oder salziger Frischkäse)",
+        "100 g geriebener Mozzarella (verleiht Elastizität)",
+        "2 große Eier",
+        "50 g geschmolzene Butter",
+        "1 Teelöffel Backpulver",
+        "1 Prise Salz (je nach Käse anpassen)"
+      ],
+      "steps": [
+        {
+          "titulo": "Käse mit Stärke mischen",
+          "contenido": "Die Maniokstärke mit dem geriebenen Küstenkäse und Mozzarella vermengen, bis eine sandige und gleichmäßige Mischung entsteht."
+        },
+        {
+          "titulo": "Feuchte Zutaten einarbeiten",
+          "contenido": "Die geschlagenen Eier, die geschmolzene Butter und das Backpulver hinzufügen. Mit den Händen kneten, bis ein elastischer, leicht klebriger Teig entsteht (das ist bei diesem Rezept normal)."
+        },
+        {
+          "titulo": "10 Minuten ruhen lassen",
+          "contenido": "Den Teig abdecken und ruhen lassen, damit die Stärke die Feuchtigkeit aufnimmt und sich leichter formen lässt."
+        },
+        {
+          "titulo": "Teigstücke formen",
+          "contenido": "Mit feuchten Händen 5 cm große Kugeln formen oder in Ringe oder Ovale formen, je nach Vorliebe."
+        },
+        {
+          "titulo": "Ofen vorheizen",
+          "contenido": "Den Ofen auf 200°C mit Ober- und Unterhitze vorheizen."
+        },
+        {
+          "titulo": "20-25 Minuten backen",
+          "contenido": "Die Brötchen auf ein mit Backpapier ausgelegtes Blech legen und backen, bis sie außen goldbraun sind und hohl klingen, wenn man sie sanft klopft."
+        },
+        {
+          "titulo": "Warm servieren",
+          "contenido": "5 Minuten abkühlen lassen, bevor sie serviert werden — innen bleiben sie elastisch mit Käsefäden."
+        }
+      ]
+    },
+    "fr": {
+      "title": "Pan de Bono Colombien",
+      "teaser": "Petits pains élastiques et légèrement salés faits avec du fromage côtier et de la fécule de manioc.",
+      "ingredients": [
+        "500 g de fécule de manioc aigre",
+        "300 g de fromage côtier râpé (ou fromage frais salé)",
+        "100 g de mozzarella râpée (ajoute de l'élasticité)",
+        "2 gros œufs",
+        "50 g de beurre fondu",
+        "1 cuillère à café de levure chimique",
+        "1 pincée de sel (ajuster selon le fromage)"
+      ],
+      "steps": [
+        {
+          "titulo": "Mélanger les fromages avec la fécule",
+          "contenido": "Combiner la fécule de manioc avec le fromage côtier et la mozzarella râpés jusqu'à obtenir un mélange sableux et uniforme."
+        },
+        {
+          "titulo": "Incorporer les ingrédients humides",
+          "contenido": "Ajouter les œufs battus, le beurre fondu et la levure chimique. Pétrir avec les mains jusqu'à obtenir une pâte élastique, légèrement collante (c'est normal pour cette recette)."
+        },
+        {
+          "titulo": "Laisser reposer 10 minutes",
+          "contenido": "Couvrir la pâte et laisser reposer pour que la fécule absorbe l'humidité et soit plus facile à façonner."
+        },
+        {
+          "titulo": "Façonner les pièces",
+          "contenido": "Avec les mains humides, former des boules de 5 cm ou leur donner la forme d'un anneau ou d'un ovale, selon votre préférence."
+        },
+        {
+          "titulo": "Préchauffer le four",
+          "contenido": "Préchauffer le four à 200°C avec chaleur de haut en bas."
+        },
+        {
+          "titulo": "Cuire 20-25 minutes",
+          "contenido": "Placer les pains sur une plaque avec du papier sulfurisé et cuire jusqu'à ce qu'ils soient dorés à l'extérieur et sonnent creux lorsqu'on les tapote doucement."
+        },
+        {
+          "titulo": "Servir tiède",
+          "contenido": "Laisser tiédir 5 minutes avant de servir — à l'intérieur, ils restent élastiques avec des fils de fromage."
+        }
+      ]
+    },
+    "it": {
+      "title": "Pan de Bono Colombiano",
+      "teaser": "Panini elastici e leggermente salati fatti con formaggio costiero e amido di manioca.",
+      "ingredients": [
+        "500 g di amido di manioca acido",
+        "300 g di formaggio costiero grattugiato (o formaggio fresco salato)",
+        "100 g di mozzarella grattugiata (aggiunge elasticità)",
+        "2 uova grandi",
+        "50 g di burro fuso",
+        "1 cucchiaino di lievito in polvere",
+        "1 pizzico di sale (regolare in base al formaggio)"
+      ],
+      "steps": [
+        {
+          "titulo": "Mescolare i formaggi con l'amido",
+          "contenido": "Unire l'amido di manioca con il formaggio costiero e la mozzarella grattugiati fino a ottenere un composto sabbioso e uniforme."
+        },
+        {
+          "titulo": "Incorporare gli ingredienti umidi",
+          "contenido": "Aggiungere le uova sbattute, il burro fuso e il lievito in polvere. Impastare con le mani fino a ottenere un impasto elastico, leggermente appiccicoso (è normale per questa ricetta)."
+        },
+        {
+          "titulo": "Lasciare riposare 10 minuti",
+          "contenido": "Coprire l'impasto e lasciare riposare affinché l'amido assorba l'umidità e sia più facile da modellare."
+        },
+        {
+          "titulo": "Formare i pezzi",
+          "contenido": "Con le mani umide, formare palline di 5 cm o dare loro la forma di anello o ovale, a seconda delle preferenze."
+        },
+        {
+          "titulo": "Preriscaldare il forno",
+          "contenido": "Preriscaldare il forno a 200°C con calore sopra e sotto."
+        },
+        {
+          "titulo": "Cuocere per 20-25 minuti",
+          "contenido": "Posizionare i panini su una teglia con carta da forno e cuocere fino a doratura esterna e suonano vuoti quando colpiti delicatamente."
+        },
+        {
+          "titulo": "Servire tiepido",
+          "contenido": "Lasciare intiepidire 5 minuti prima di servire — all'interno rimangono elastici con fili di formaggio."
+        }
+      ]
+    }
+  }
+}

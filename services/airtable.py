@@ -1,4 +1,5 @@
 import json
+import os
 import time
 from datetime import datetime, timezone
 from pyairtable import Api
@@ -133,6 +134,74 @@ def get_next_recipe() -> dict | None:
 
 def mark_recipe_distributed(record_id: str) -> None:
     get_recipes_table().update(record_id, {"Distributed": True})
+
+
+# ── Recetas públicas (usadas por la web, /api/recetas) ────────────────
+#
+# El español vive en Airtable (Title/Description/IngredientsJson/StepsJson) y
+# es la fuente de verdad editable sin deploy. Los demás idiomas se traducen
+# una vez y quedan versionados en data/recipe_translations.json — mismo
+# patrón que el resto de los textos del sitio (messages/*.json), en vez de
+# volver a traducir en cada request.
+
+_TRANSLATIONS_PATH = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data", "recipe_translations.json")
+_translations_cache: dict | None = None
+
+
+def _load_translations() -> dict:
+    global _translations_cache
+    if _translations_cache is None:
+        try:
+            with open(_TRANSLATIONS_PATH, encoding="utf-8") as f:
+                _translations_cache = json.load(f)
+        except FileNotFoundError:
+            _translations_cache = {}
+    return _translations_cache
+
+
+def list_recipes_public(locale: str = "es") -> list[dict]:
+    translations = _load_translations() if locale != "es" else {}
+    records = get_recipes_table().all()
+
+    recipes = []
+    for record in records:
+        fields = record.get("fields", {})
+        slug = fields.get("Slug")
+        if not slug:
+            continue
+
+        translation = translations.get(slug, {}).get(locale) if locale != "es" else None
+
+        if translation:
+            title = translation.get("title", fields.get("Title", ""))
+            teaser = translation.get("teaser", fields.get("Description", ""))
+            ingredients = translation.get("ingredients") or json.loads(fields.get("IngredientsJson") or "[]")
+            steps_raw = translation.get("steps") or json.loads(fields.get("StepsJson") or "[]")
+        else:
+            title = fields.get("Title", "")
+            teaser = fields.get("Description", "")
+            ingredients = json.loads(fields.get("IngredientsJson") or "[]")
+            steps_raw = json.loads(fields.get("StepsJson") or "[]")
+
+        steps = [f"{s['titulo']}: {s['contenido']}" if isinstance(s, dict) else s for s in steps_raw]
+
+        images = fields.get("Image") or []
+        category = (fields.get("Category") or "").strip().lower()
+        time_minutes = fields.get("TimeMinutes")
+
+        recipes.append({
+            "key": slug,
+            "country": category,
+            "title": title,
+            "teaser": teaser,
+            "ingredients": ingredients,
+            "steps": steps,
+            "time": f"{time_minutes} min" if time_minutes is not None else "",
+            "difficulty": fields.get("Difficulty", ""),
+            "img": images[0]["url"] if images else None,
+        })
+
+    return recipes
 
 
 # ── ImageHost (alojamiento temporal de imágenes compuestas) ──────────

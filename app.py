@@ -7,6 +7,7 @@ from config import ALLOWED_ORIGINS
 from routers.public import router as public_router, health_router
 from routers.admin import router as admin_router, login_router
 from routers.cron import router as cron_router
+from routers.recetas import router as recetas_router
 
 app = FastAPI(title="Kelu API", docs_url=None, redoc_url="/redoc")
 
@@ -24,6 +25,7 @@ app.include_router(public_router, prefix="/api")    # POST /api/formsubmit
 app.include_router(login_router, prefix="/api/admin")   # POST /api/admin/login
 app.include_router(admin_router, prefix="/api/admin")   # GET/PATCH /api/admin/leads
 app.include_router(cron_router, prefix="/api/cron")     # GET/POST /api/cron/kelu-receta
+app.include_router(recetas_router, prefix="/api")        # GET /api/recetas
 
 
 @app.get("/", include_in_schema=False)
