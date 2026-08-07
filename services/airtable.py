@@ -146,3 +146,21 @@ def get_next_recipe() -> dict | None:
 
 def mark_recipe_distributed(record_id: str) -> None:
     get_recipes_table().update(record_id, {"Distributed": True})
+
+
+# ── ImageHost (alojamiento temporal de imágenes compuestas) ──────────
+#
+# Instagram/Facebook exigen una URL pública para publicar. Las imágenes con
+# texto superpuesto se generan on-the-fly (no tienen URL propia), así que se
+# suben como attachment a esta tabla y se usa la URL que devuelve Airtable.
+
+def upload_image_and_get_url(image_bytes: bytes, filename: str, label: str = "") -> str:
+    table = get_airtable_table("ImageHost")
+    record = table.create({"Name": label or filename})
+    result = table.upload_attachment(
+        record["id"], "Image", filename, content=image_bytes, content_type="image/jpeg"
+    )
+    attachments = result.get("fields", {}).get("Image", [])
+    if not attachments:
+        raise RuntimeError("No se pudo subir la imagen a Airtable (ImageHost)")
+    return attachments[-1]["url"]

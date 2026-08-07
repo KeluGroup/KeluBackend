@@ -11,8 +11,10 @@ from services.airtable import (
     get_used_photo_ids,
     get_next_recipe,
     mark_recipe_distributed,
+    upload_image_and_get_url,
 )
 from services.gnews import get_trend
+from services.image_compose import compose_hook_image
 from services.meta_kelu import (
     fetch_foto_unsplash,
     publish_to_instagram,
@@ -70,6 +72,21 @@ def _build_caption(post: dict) -> str:
     # Separador visual generoso antes de los hashtags, como en un caption
     # profesional de IG (evita que queden pegados al último párrafo).
     return f"{post['titulo']}\n\n{post['cuerpo']}\n\n.\n.\n{hashtags}"
+
+
+def _prepare_display_image(foto: dict, hook_text: str, filename_prefix: str) -> str:
+    """
+    Compone el gancho del post sobre la foto (estilo tarjeta editorial) y la
+    sube para tener una URL propia — Instagram/Facebook necesitan una URL
+    pública, no aceptan bytes directamente. Si algo falla en el camino, cae
+    de vuelta a la foto original sin texto en vez de abortar la publicación.
+    """
+    try:
+        composed = compose_hook_image(foto["url"], hook_text)
+        return upload_image_and_get_url(composed, f"{filename_prefix}.jpg", label=hook_text)
+    except Exception:  # noqa: BLE001
+        logger.exception("Fallo componiendo/subiendo la imagen con texto, se usa la foto original")
+        return foto["url"]
 
 
 # ══════════════════════════════════════════════════════════════════
@@ -131,7 +148,8 @@ def publicar_receta_semanal() -> dict:
         ]
         foto = fetch_foto_unsplash(cover_variants, avoid_ids)
         if foto:
-            image_urls.append(foto["url"])
+            cover_url = _prepare_display_image(foto, recipe["title"], "receta_cover")
+            image_urls.append(cover_url)
             photo_ids.append(foto["id"])
             avoid_ids.add(foto["id"])
 
@@ -226,17 +244,18 @@ def publicar_tip_dato(fallback_index: int) -> dict:
         foto = fetch_foto_unsplash(post.get("keywords_foto") or ["latin food culture", "gastronomy trend"], avoid_ids)
         if not foto:
             raise RuntimeError("No se encontró foto en Unsplash para este contenido.")
+        image_url = _prepare_display_image(foto, post["titulo"], "tip_dato")
 
         ig_result, ig_error = None, None
         try:
-            ig_result = publish_to_instagram(foto["url"], caption)
+            ig_result = publish_to_instagram(image_url, caption)
         except Exception as exc:  # noqa: BLE001
             ig_error = str(exc)
             logger.exception("Fallo publicando tip_dato en Instagram")
 
         fb_result, fb_error = None, None
         try:
-            fb_result = publish_to_facebook(foto["url"], caption)
+            fb_result = publish_to_facebook(image_url, caption)
         except Exception as exc:  # noqa: BLE001
             fb_error = str(exc)
             logger.exception("Fallo publicando tip_dato en Facebook")
@@ -356,17 +375,18 @@ def publicar_tip_foto(fallback_index: int) -> dict:
         foto = fetch_foto_unsplash(post.get("keywords_foto") or dato["keywords_foto"], avoid_ids)
         if not foto:
             raise RuntimeError("No se encontró foto en Unsplash para este contenido.")
+        image_url = _prepare_display_image(foto, post["titulo"], "tip_foto")
 
         ig_result, ig_error = None, None
         try:
-            ig_result = publish_to_instagram(foto["url"], caption)
+            ig_result = publish_to_instagram(image_url, caption)
         except Exception as exc:  # noqa: BLE001
             ig_error = str(exc)
             logger.exception("Fallo publicando tip_foto en Instagram")
 
         fb_result, fb_error = None, None
         try:
-            fb_result = publish_to_facebook(foto["url"], caption)
+            fb_result = publish_to_facebook(image_url, caption)
         except Exception as exc:  # noqa: BLE001
             fb_error = str(exc)
             logger.exception("Fallo publicando tip_foto en Facebook")
