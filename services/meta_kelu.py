@@ -1,10 +1,8 @@
 import json
-import random
 import time
 
 import requests
 from config import (
-    UNSPLASH_ACCESS_KEY,
     KELU_IG_ACCESS_TOKEN,
     KELU_IG_ACCOUNT_ID,
     KELU_FB_PAGE_ID,
@@ -37,48 +35,6 @@ def _wait_for_ig_container(creation_id: str, max_wait_seconds: int = 60, interva
         time.sleep(interval)
         elapsed += interval
     raise RuntimeError(f"Timeout esperando que el media container IG {creation_id} esté listo")
-
-
-def fetch_foto_unsplash(query_variants: list[str], avoid_ids: set | None = None) -> dict | None:
-    """
-    Busca fotos en Unsplash a partir de varias variantes de búsqueda (cada una en
-    inglés, 2-4 palabras, sobre el mismo tema desde ángulos distintos). Junta los
-    resultados de todas las variantes en un solo pool y elige uno al azar que no
-    esté en `avoid_ids`, para minimizar fotos repetidas entre posts.
-
-    Devuelve {"id": <unsplash photo id>, "url": <regular url>} o None si no hay resultados.
-    """
-    if not UNSPLASH_ACCESS_KEY:
-        raise RuntimeError("UNSPLASH_ACCESS_KEY no está configurada")
-
-    avoid_ids = avoid_ids or set()
-    pool = []
-    seen_ids = set()
-
-    for query in query_variants:
-        resp = requests.get(
-            "https://api.unsplash.com/search/photos",
-            params={"query": query, "per_page": 30, "orientation": "squarish"},
-            headers={"Authorization": f"Client-ID {UNSPLASH_ACCESS_KEY}"},
-            timeout=15,
-        )
-        resp.raise_for_status()
-        for r in resp.json().get("results", []):
-            rid = r.get("id")
-            if rid and rid not in seen_ids:
-                seen_ids.add(rid)
-                pool.append(r)
-
-    if not pool:
-        return None
-
-    candidates = [r for r in pool if r.get("id") not in avoid_ids]
-    if not candidates:
-        # Ya usamos todo el pool disponible para este tema — mejor repetir que fallar.
-        candidates = pool
-
-    chosen = random.choice(candidates)
-    return {"id": chosen.get("id"), "url": chosen.get("urls", {}).get("regular")}
 
 
 def publish_to_instagram(image_url: str, caption: str) -> dict:

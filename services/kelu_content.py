@@ -8,15 +8,14 @@ from config import OPENAI_API_KEY
 from services.airtable import (
     create_social_post,
     has_published_today,
-    get_used_photo_ids,
     get_next_recipe,
     mark_recipe_distributed,
     upload_image_and_get_url,
 )
 from services.gnews import get_trend
 from services.image_compose import compose_hook_image
+from services.image_generate import generate_dish_photo
 from services.meta_kelu import (
-    fetch_foto_unsplash,
     publish_to_instagram,
     publish_to_facebook,
     publish_carousel_to_instagram,
@@ -74,19 +73,26 @@ def _build_caption(post: dict) -> str:
     return f"{post['titulo']}\n\n{post['cuerpo']}\n\n.\n.\n{hashtags}"
 
 
-def _prepare_display_image(foto: dict, hook_text: str, filename_prefix: str) -> str:
+def _generate_display_image(description: str, hook_text: str, filename_prefix: str) -> str:
     """
-    Compone el gancho del post sobre la foto (estilo tarjeta editorial) y la
-    sube para tener una URL propia — Instagram/Facebook necesitan una URL
-    pública, no aceptan bytes directamente. Si algo falla en el camino, cae
-    de vuelta a la foto original sin texto en vez de abortar la publicación.
+    Genera con IA una foto fiel a `description`, le superpone el gancho del
+    post (estilo tarjeta editorial) y sube el resultado para tener una URL
+    pública — Meta exige una URL, no acepta bytes directamente. Si falla solo
+    el paso de superponer texto, cae de vuelta a la foto generada sin texto.
     """
+    photo_bytes = generate_dish_photo(description)
     try:
-        composed = compose_hook_image(foto["url"], hook_text)
-        return upload_image_and_get_url(composed, f"{filename_prefix}.jpg", label=hook_text)
+        final_bytes = compose_hook_image(photo_bytes, hook_text)
     except Exception:  # noqa: BLE001
-        logger.exception("Fallo componiendo/subiendo la imagen con texto, se usa la foto original")
-        return foto["url"]
+        logger.exception("Fallo componiendo el texto sobre la imagen, se sube la foto sin texto")
+        final_bytes = photo_bytes
+    return upload_image_and_get_url(final_bytes, f"{filename_prefix}.jpg", label=hook_text)
+
+
+def _generate_plain_image(description: str, filename_prefix: str) -> str:
+    """Genera con IA una foto fiel a `description`, sin texto superpuesto, y la sube."""
+    photo_bytes = generate_dish_photo(description)
+    return upload_image_and_get_url(photo_bytes, f"{filename_prefix}.jpg")
 
 
 # ══════════════════════════════════════════════════════════════════
@@ -138,34 +144,18 @@ def publicar_receta_semanal() -> dict:
         post = generar_caption_receta(recipe)
         caption = _build_caption(post)
 
-        avoid_ids = get_used_photo_ids()
-        image_urls = []
-        photo_ids = []
+        cover_desc = (
+            f"{recipe['title']}, plato tradicional de la cocina de {recipe['category']}. "
+            f"{recipe['description']}"
+        )
+        image_urls = [_generate_display_image(cover_desc, recipe["title"], "receta_cover")]
 
-        cover_variants = [
-            f"{recipe['title']} {recipe['category']} food dish",
-            f"{recipe['category']} latin cuisine plate",
-        ]
-        foto = fetch_foto_unsplash(cover_variants, avoid_ids)
-        if foto:
-            cover_url = _prepare_display_image(foto, recipe["title"], "receta_cover")
-            image_urls.append(cover_url)
-            photo_ids.append(foto["id"])
-            avoid_ids.add(foto["id"])
-
-        for step in recipe["steps"]:
-            variants = [
-                f"{step['titulo']} {recipe['category']} cooking",
-                f"{recipe['title']} food preparation",
-            ]
-            foto = fetch_foto_unsplash(variants, avoid_ids)
-            if foto:
-                image_urls.append(foto["url"])
-                photo_ids.append(foto["id"])
-                avoid_ids.add(foto["id"])
-
-        if len(image_urls) < 2:
-            raise RuntimeError("No se encontraron suficientes fotos para el carrusel (mínimo 2)")
+        for i, step in enumerate(recipe["steps"]):
+            step_desc = (
+                f"{step['contenido']} — paso de preparación de {recipe['title']}, "
+                f"cocina de {recipe['category']}"
+            )
+            image_urls.append(_generate_plain_image(step_desc, f"receta_step_{i}"))
 
         ig_result, ig_error = None, None
         try:
@@ -187,7 +177,6 @@ def publicar_receta_semanal() -> dict:
                 post_type="weekly_recipe",
                 topic=recipe["title"],
                 caption=caption,
-                photo_ids=photo_ids,
             )
 
         return {
@@ -224,7 +213,7 @@ JSON exacto:
   "titulo": "Gancho de máximo 60 caracteres",
   "cuerpo": "Post completo máximo 200 palabras, párrafos separados por \\n\\n como se indicó arriba",
   "hashtags": ["12-15 hashtags en español e inglés sin símbolo, incluir siempre: kelu, kelusuiza, cocinalatina, tendenciasgastronomicas"],
-  "keywords_foto": ["variante 1 de 3-4 palabras EN INGLÉS relacionada al tema", "variante 2 de 3-4 palabras EN INGLÉS, ángulo distinto del mismo tema"]
+  "descripcion_foto": "Descripción vívida y muy específica en español (1-2 oraciones) de una escena o plato de comida latina relacionado al tema, para que una IA genere la foto"
 }}
 
 IMPORTANTE: Devuelve SOLO el JSON. Sin markdown."""
@@ -240,11 +229,8 @@ def publicar_tip_dato(fallback_index: int) -> dict:
         post = generar_post_tip_dato(trend)
         caption = _build_caption(post)
 
-        avoid_ids = get_used_photo_ids()
-        foto = fetch_foto_unsplash(post.get("keywords_foto") or ["latin food culture", "gastronomy trend"], avoid_ids)
-        if not foto:
-            raise RuntimeError("No se encontró foto en Unsplash para este contenido.")
-        image_url = _prepare_display_image(foto, post["titulo"], "tip_dato")
+        descripcion = post.get("descripcion_foto") or f"{trend['tema']}. {trend['angulo']}"
+        image_url = _generate_display_image(descripcion, post["titulo"], "tip_dato")
 
         ig_result, ig_error = None, None
         try:
@@ -267,7 +253,6 @@ def publicar_tip_dato(fallback_index: int) -> dict:
                 caption=caption,
                 angulo=trend["angulo"],
                 fuente=trend["fuente"],
-                photo_ids=[foto["id"]],
             )
 
         return {
@@ -292,43 +277,36 @@ DATOS_CURIOSOS_BASE = [
         "tema": "El origen de la panela",
         "dato": "La panela se produce igual que hace siglos: jugo de caña cocido y solidificado sin refinar, conservando minerales que el azúcar blanca pierde en el proceso industrial",
         "producto": "Panela colombiana",
-        "keywords_foto": ["sugar cane panela block", "raw cane sugar colombia"],
     },
     {
         "tema": "El ají amarillo no es solo picante",
         "dato": "El ají amarillo peruano aporta más color y aroma frutal que picor real — es la base de sabor de platos icónicos como el ají de gallina o la causa limeña",
         "producto": "Ají amarillo en pasta",
-        "keywords_foto": ["yellow chili pepper peru", "aji amarillo paste"],
     },
     {
         "tema": "El maíz, regalo de Mesoamérica",
         "dato": "El maíz fue domesticado hace más de 9000 años en Mesoamérica y hoy existen miles de variedades — la arepa colombiana y venezolana usa maíz blanco precocido",
         "producto": "Arepas de maíz blanco",
-        "keywords_foto": ["corn field latin america", "white corn maize variety"],
     },
     {
         "tema": "El frijol negro, proteína ancestral",
         "dato": "El frijol negro se cultiva en América Latina desde hace más de 7000 años y es una de las fuentes de proteína vegetal más completas junto al arroz",
         "producto": "Frijoles negros",
-        "keywords_foto": ["black beans dried bowl", "latin legumes pantry"],
     },
     {
         "tema": "La cocina latina no es una sola cocina",
         "dato": "América Latina tiene más de 20 países con tradiciones culinarias propias — lo que llamamos 'comida latina' es en realidad cientos de cocinas regionales distintas",
         "producto": None,
-        "keywords_foto": ["latin american food variety", "diverse latin dishes table"],
     },
     {
         "tema": "El viaje de un tequeño hasta Suiza",
         "dato": "Cada lote de tequeños viaja congelado en cadena de frío controlada desde origen hasta el almacén en Suiza, para que lleguen a tu cocina con el mismo sabor de siempre",
         "producto": "Tequeños",
-        "keywords_foto": ["frozen food logistics", "cold chain shipping food"],
     },
     {
         "tema": "La yuca, raíz de 5000 años",
         "dato": "La yuca fue domesticada en Sudamérica hace más de 5000 años y hoy es la base de platos tan distintos como el pan de bono colombiano y el casabe caribeño",
         "producto": "Yuca frita",
-        "keywords_foto": ["cassava root food", "yuca dish latin"],
     },
 ]
 
@@ -355,7 +333,7 @@ JSON exacto:
   "titulo": "Gancho de máximo 60 caracteres, tipo pregunta",
   "cuerpo": "Post completo máximo 180 palabras, párrafos separados por \\n\\n como se indicó arriba",
   "hashtags": ["12-15 hashtags en español e inglés sin símbolo, incluir siempre: kelu, kelusuiza, datoscuriosos, cocinalatina, culturalatina"],
-  "keywords_foto": ["variante 1 de 3-4 palabras EN INGLÉS relacionada al tema", "variante 2 de 3-4 palabras EN INGLÉS, ángulo distinto del mismo tema"]
+  "descripcion_foto": "Descripción vívida y muy específica en español (1-2 oraciones) del producto o escena relacionada al tema, para que una IA genere la foto"
 }}
 
 IMPORTANTE: Devuelve SOLO el JSON. Sin markdown."""
@@ -371,11 +349,8 @@ def publicar_tip_foto(fallback_index: int) -> dict:
         post = generar_post_tip_foto(dato)
         caption = _build_caption(post)
 
-        avoid_ids = get_used_photo_ids()
-        foto = fetch_foto_unsplash(post.get("keywords_foto") or dato["keywords_foto"], avoid_ids)
-        if not foto:
-            raise RuntimeError("No se encontró foto en Unsplash para este contenido.")
-        image_url = _prepare_display_image(foto, post["titulo"], "tip_foto")
+        descripcion = post.get("descripcion_foto") or dato["dato"]
+        image_url = _generate_display_image(descripcion, post["titulo"], "tip_foto")
 
         ig_result, ig_error = None, None
         try:
@@ -396,7 +371,6 @@ def publicar_tip_foto(fallback_index: int) -> dict:
                 post_type="midweek_tip_foto",
                 topic=dato["tema"],
                 caption=caption,
-                photo_ids=[foto["id"]],
             )
 
         return {

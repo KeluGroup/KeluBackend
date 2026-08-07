@@ -14,7 +14,6 @@ AIRTABLE_SOCIALPOSTS_TABLE_NAME = os.getenv("AIRTABLE_SOCIALPOSTS_TABLE_NAME", "
 AIRTABLE_RECIPES_TABLE_NAME     = os.getenv("AIRTABLE_RECIPES_TABLE_NAME", "Recipes")
 
 OPENAI_API_KEY       = os.getenv("OPENAI_API_KEY")
-UNSPLASH_ACCESS_KEY  = os.getenv("UNSPLASH_ACCESS_KEY")
 GNEWS_API_KEY        = os.getenv("GNEWS_API_KEY")  # opcional — sin esto, las tendencias usan el fallback curado
 
 KELU_IG_ACCESS_TOKEN = os.getenv("KELU_IG_ACCESS_TOKEN")

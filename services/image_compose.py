@@ -3,12 +3,11 @@ import logging
 import os
 import textwrap
 
-import requests
 from PIL import Image, ImageDraw, ImageFont, ImageOps
 
 logger = logging.getLogger(__name__)
 
-FONT_PATH = os.path.join(os.path.dirname(os.path.dirname(__file__)), "static", "fonts", "Anton-Regular.ttf")
+FONT_PATH = os.path.join(os.path.dirname(os.path.dirname(__file__)), "static", "fonts", "LilitaOne-Regular.ttf")
 CANVAS_SIZE = 1080
 MAX_TEXT_WIDTH = CANVAS_SIZE - 140  # margen a los costados
 GRADIENT_HEIGHT = 620
@@ -39,18 +38,15 @@ def _fit_text(draw: ImageDraw.ImageDraw, text: str) -> tuple[str, ImageFont.Free
     return wrapped, font, bbox
 
 
-def compose_hook_image(source_url: str, hook_text: str) -> bytes:
+def compose_hook_image(image_bytes: bytes, hook_text: str) -> bytes:
     """
-    Descarga la foto de `source_url`, la recorta a cuadrado y le superpone
-    `hook_text` en grande sobre un degradado oscuro en la parte inferior —
-    estilo tarjeta editorial (ej. posts de NYT Cooking / cuentas de comida).
+    Recibe los bytes de una foto (generada con IA), la recorta a cuadrado y le
+    superpone `hook_text` en grande sobre un degradado oscuro en la parte
+    inferior — estilo tarjeta editorial (ej. posts de NYT Cooking / cuentas de comida).
 
     Devuelve los bytes del JPEG resultante.
     """
-    resp = requests.get(source_url, timeout=20)
-    resp.raise_for_status()
-
-    base = Image.open(io.BytesIO(resp.content)).convert("RGB")
+    base = Image.open(io.BytesIO(image_bytes)).convert("RGB")
     base = ImageOps.fit(base, (CANVAS_SIZE, CANVAS_SIZE), Image.LANCZOS)
     base = base.convert("RGBA")
 

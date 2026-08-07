@@ -58,7 +58,6 @@ def update_lead(record_id: str, status: str) -> None:
 #   Caption    (long text)
 #   Angulo     (single line text)  ángulo de tendencia usado, si hubo
 #   Fuente     (single line text)  "gnews" | "fallback"
-#   PhotoIds   (long text)         IDs de fotos de Unsplash usadas, separados por coma
 #
 # Solo se crea un registro cuando la publicación fue exitosa — esta tabla
 # es el registro de lo publicado, no un log de intentos.
@@ -68,15 +67,13 @@ def get_socialposts_table():
 
 
 def create_social_post(post_type: str, topic: str, caption: str,
-                        angulo: str = "", fuente: str = "",
-                        photo_ids: list[str] | None = None) -> dict:
+                        angulo: str = "", fuente: str = "") -> dict:
     fields = {
         "PostType": post_type,
         "Topic":    topic,
         "Caption":  caption,
         "Angulo":   angulo,
         "Fuente":   fuente,
-        "PhotoIds": ", ".join(photo_ids or []),
     }
     fields = {k: v for k, v in fields.items() if v}
     record = get_socialposts_table().create(fields)
@@ -89,17 +86,6 @@ def has_published_today() -> bool:
     formula = f"IS_SAME(CREATED_TIME(), '{today}', 'day')"
     records = get_socialposts_table().all(formula=formula, max_records=1)
     return len(records) > 0
-
-
-def get_used_photo_ids(limit: int = 500) -> set:
-    """IDs de fotos de Unsplash ya usadas en posts anteriores, para no repetirlas."""
-    records = get_socialposts_table().all(fields=["PhotoIds"], max_records=limit)
-    ids = set()
-    for r in records:
-        raw = r.get("fields", {}).get("PhotoIds", "")
-        if raw:
-            ids.update(p.strip() for p in raw.split(",") if p.strip())
-    return ids
 
 
 # ── Recipes (recetas semanales, fuente de la tabla de carruseles) ────
