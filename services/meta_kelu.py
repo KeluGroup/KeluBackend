@@ -1,5 +1,6 @@
 import json
 import time
+from concurrent.futures import ThreadPoolExecutor
 
 import requests
 from config import (
@@ -100,8 +101,7 @@ def publish_carousel_to_instagram(image_urls: list[str], caption: str) -> dict:
     if not (2 <= len(image_urls) <= 10):
         raise RuntimeError("Un carrusel de Instagram necesita entre 2 y 10 imágenes")
 
-    child_ids = []
-    for image_url in image_urls:
+    def _create_child(image_url: str) -> str:
         resp = requests.post(
             f"{GRAPH_BASE}/{KELU_IG_ACCOUNT_ID}/media",
             data={
@@ -116,7 +116,12 @@ def publish_carousel_to_instagram(image_urls: list[str], caption: str) -> dict:
             raise RuntimeError(f"Error creando slide del carrusel IG: {data}")
         child_id = data["id"]
         _wait_for_ig_container(child_id)
-        child_ids.append(child_id)
+        return child_id
+
+    # Cada slide se crea y espera en paralelo — ThreadPoolExecutor.map
+    # conserva el orden de image_urls en los resultados.
+    with ThreadPoolExecutor(max_workers=len(image_urls)) as pool:
+        child_ids = list(pool.map(_create_child, image_urls))
 
     container_resp = requests.post(
         f"{GRAPH_BASE}/{KELU_IG_ACCOUNT_ID}/media",
@@ -152,8 +157,7 @@ def publish_carousel_to_facebook(image_urls: list[str], caption: str) -> dict:
     if not KELU_FB_PAGE_TOKEN or not KELU_FB_PAGE_ID:
         raise RuntimeError("KELU_FB_PAGE_TOKEN / KELU_FB_PAGE_ID no configurados")
 
-    media_ids = []
-    for image_url in image_urls:
+    def _upload_photo(image_url: str) -> str:
         resp = requests.post(
             f"{GRAPH_BASE}/{KELU_FB_PAGE_ID}/photos",
             data={
@@ -166,7 +170,10 @@ def publish_carousel_to_facebook(image_urls: list[str], caption: str) -> dict:
         data = resp.json()
         if not resp.ok:
             raise RuntimeError(f"Error subiendo foto del carrusel FB: {data}")
-        media_ids.append(data["id"])
+        return data["id"]
+
+    with ThreadPoolExecutor(max_workers=len(image_urls)) as pool:
+        media_ids = list(pool.map(_upload_photo, image_urls))
 
     feed_data = {
         "message": caption,

@@ -1,5 +1,6 @@
 import json
 import logging
+from concurrent.futures import ThreadPoolExecutor
 from datetime import date
 
 from openai import OpenAI
@@ -148,14 +149,26 @@ def publicar_receta_semanal() -> dict:
             f"{recipe['title']}, plato tradicional de la cocina de {recipe['category']}. "
             f"{recipe['description']}"
         )
-        image_urls = [_generate_display_image(cover_desc, recipe["title"], "receta_cover")]
 
-        for i, step in enumerate(recipe["steps"]):
+        # La portada + cada paso se generan en paralelo (cada uno implica una
+        # llamada a gpt-image-1 de ~15-25s) — en serie, una receta de 7 pasos
+        # supera el límite de duración de la función. El orden final se
+        # conserva porque ThreadPoolExecutor.map devuelve en orden de envío.
+        def _make_cover():
+            return _generate_display_image(cover_desc, recipe["title"], "receta_cover")
+
+        def _make_step(item):
+            i, step = item
             step_desc = (
                 f"{step['contenido']} — paso de preparación de {recipe['title']}, "
                 f"cocina de {recipe['category']}"
             )
-            image_urls.append(_generate_plain_image(step_desc, f"receta_step_{i}"))
+            return _generate_plain_image(step_desc, f"receta_step_{i}")
+
+        with ThreadPoolExecutor(max_workers=len(recipe["steps"]) + 1) as pool:
+            cover_future = pool.submit(_make_cover)
+            step_urls = list(pool.map(_make_step, enumerate(recipe["steps"])))
+            image_urls = [cover_future.result()] + step_urls
 
         ig_result, ig_error = None, None
         try:
