@@ -1,4 +1,5 @@
 import json
+import time
 from datetime import datetime, timezone
 from pyairtable import Api
 from config import (
@@ -147,6 +148,17 @@ def upload_image_and_get_url(image_bytes: bytes, filename: str, label: str = "")
         record["id"], "Image", filename, content=image_bytes, content_type="image/jpeg"
     )
     attachments = result.get("fields", {}).get("Image", [])
+
+    # La respuesta del upload puede llegar antes de que Airtable termine de
+    # procesar el adjunto (eventual consistency) — se reintenta releyendo el
+    # registro un par de veces antes de darlo por fallido.
+    for _ in range(4):
+        if attachments:
+            break
+        time.sleep(1.5)
+        record = table.get(record["id"])
+        attachments = record.get("fields", {}).get("Image", [])
+
     if not attachments:
         raise RuntimeError("No se pudo subir la imagen a Airtable (ImageHost)")
     return attachments[-1]["url"]
