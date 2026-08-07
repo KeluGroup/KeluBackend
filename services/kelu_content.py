@@ -154,6 +154,10 @@ def publicar_receta_semanal() -> dict:
         # llamada a gpt-image-1 de ~15-25s) — en serie, una receta de 7 pasos
         # supera el límite de duración de la función. El orden final se
         # conserva porque ThreadPoolExecutor.map devuelve en orden de envío.
+        # max_workers se limita a 4 porque la cuenta de OpenAI tiene un
+        # límite de 5 imágenes/min para gpt-image-1 — generate_dish_photo ya
+        # reintenta con backoff ante 429, pero un burst de 8 a la vez lo
+        # dispara de entrada.
         def _make_cover():
             return _generate_display_image(cover_desc, recipe["title"], "receta_cover")
 
@@ -165,7 +169,7 @@ def publicar_receta_semanal() -> dict:
             )
             return _generate_plain_image(step_desc, f"receta_step_{i}")
 
-        with ThreadPoolExecutor(max_workers=len(recipe["steps"]) + 1) as pool:
+        with ThreadPoolExecutor(max_workers=4) as pool:
             cover_future = pool.submit(_make_cover)
             step_urls = list(pool.map(_make_step, enumerate(recipe["steps"])))
             image_urls = [cover_future.result()] + step_urls
